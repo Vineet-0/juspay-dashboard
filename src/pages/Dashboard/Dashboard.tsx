@@ -99,6 +99,7 @@ const Dashboard = () => {
             rowHeight={120}
             isResizable={true}
             isDraggable={true}
+            margin={[30, 30]}
         >
             {layout.map((item) => (
                 <div

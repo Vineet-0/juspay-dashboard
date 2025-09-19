@@ -42,10 +42,10 @@ const Activities = () => {
         },
     ];
     return (
-        <div className="max-h-1/3 p-3   flex-1">
-            <h2 className="text-lg font-semibold mb-2">Activities</h2>
+        <div className="p-3 pb-5">
+            <h2 className="text-lg font-semibold mb-3">Activities</h2>
             <ul
-                className={`flex flex-col gap-2 h-[88%] overflow-y-auto ${
+                className={`flex flex-col gap-2 h-[88%] ${
                     theme === "dark"
                         ? "scrollbar-custom-dark"
                         : "scrollbar-custom-light"

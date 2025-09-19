@@ -29,7 +29,7 @@ const Navbar = () => {
                     : "bg-white text-black border-gray-100"
             } border-b-2 flex items-center justify-between gap-5 px-6`}
         >
-            <div className="flex gap-4 items-center justify-end">
+            <div className="flex gap-5 items-center justify-end">
                 <button
                     onClick={() => dispatch(toggleSidebar())}
                     className=""
@@ -45,7 +45,7 @@ const Navbar = () => {
                 <div className="text-md font-[300]">Default</div>
             </div>
 
-            <div className="flex gap-4 items-center justify-end flex-1">
+            <div className="flex gap-5 items-center justify-end flex-1">
                 <SearchBar />
                 <button onClick={toggleTheme} className="" title="Toggle Theme">
                     {theme === "light" ? (

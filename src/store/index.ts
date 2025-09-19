@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import themeReducer from "./themeSlice";
 import layoutReducer from "./layoutSlice";
+import activeTabReducer from "./activeTabSlice";
 
 const store = configureStore({
     reducer: {
         theme: themeReducer,
         layout: layoutReducer,
+        activeTab: activeTabReducer, // Added activeTab slice
     },
 });
 
