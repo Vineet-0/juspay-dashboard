@@ -227,17 +227,41 @@ const Sidebar = () => {
                 />
                 ByeWind
             </div>
-            <div className="p-5 h-[92%] overflow-y-auto flex flex-col items-center justify-items-start gap-5">
+            <div
+                className={`p-5 h-[92%] ${
+                    theme === "dark"
+                        ? "scrollbar-custom-dark"
+                        : "scrollbar-custom-light"
+                } overflow-y-auto flex flex-col items-center justify-items-start gap-5`}
+            >
                 <div className="w-full">
-                    <div className="w-full mb-2 flex items-center justify-around text-black opacity-40">
+                    <div
+                        className={`w-full mb-2 flex items-center justify-around ${
+                            theme === "dark"
+                                ? "text-white opacity-60"
+                                : "text-black opacity-40"
+                        } `}
+                    >
                         <div>Favorites</div>
                         <div>Recently</div>
                     </div>
                     <ul>
-                        <li className="hover:bg-gray-200 p-2 rounded cursor-pointer">
+                        <li
+                            className={`${
+                                theme === "dark"
+                                    ? "hover:bg-gray-700"
+                                    : "hover:bg-gray-200"
+                            } p-2 rounded cursor-pointer`}
+                        >
                             Overview
                         </li>
-                        <li className="hover:bg-gray-200 p-2 rounded cursor-pointer">
+                        <li
+                            className={`${
+                                theme === "dark"
+                                    ? "hover:bg-gray-700"
+                                    : "hover:bg-gray-200"
+                            } p-2 rounded cursor-pointer`}
+                        >
                             Projects
                         </li>
                     </ul>

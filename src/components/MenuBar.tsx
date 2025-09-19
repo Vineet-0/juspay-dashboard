@@ -1,5 +1,7 @@
+import { type RootState } from "../store";
 import React, { useState } from "react";
 import { PiCaretDownBold, PiCaretRightBold } from "react-icons/pi";
+import { useSelector } from "react-redux";
 
 const MenuBar = ({
     key,
@@ -11,6 +13,7 @@ const MenuBar = ({
     menu: any;
 }) => {
     const [openItems, setOpenItems] = useState<{ [key: string]: boolean }>({});
+    const theme = useSelector((state: RootState) => state.theme);
 
     const toggleItem = (itemKey: string) => {
         setOpenItems((prev) => ({
@@ -21,7 +24,15 @@ const MenuBar = ({
 
     return (
         <div className="w-full" key={key}>
-            <div className="w-full text-black opacity-40">{title}</div>
+            <div
+                className={`w-full ${
+                    theme === "dark"
+                        ? "text-white opacity-60"
+                        : "text-black opacity-40"
+                } mb-2`}
+            >
+                {title}
+            </div>
             <ul>
                 {menu.map((item: any, index: number) => {
                     const itemKey = `${key}+${index}`;
@@ -30,7 +41,11 @@ const MenuBar = ({
                     return (
                         <React.Fragment key={itemKey}>
                             <li
-                                className="hover:bg-gray-200 p-2 rounded cursor-pointer flex justify-flex-start items-center gap-2"
+                                className={`${
+                                    theme === "dark"
+                                        ? "hover:bg-gray-700"
+                                        : "hover:bg-gray-200"
+                                }  p-2 rounded cursor-pointer flex justify-flex-start items-center gap-2`}
                                 onClick={() => toggleItem(itemKey)}
                             >
                                 {item.children && item.children.length > 0 ? (
@@ -58,7 +73,11 @@ const MenuBar = ({
                                             ) => (
                                                 <li
                                                     key={`${itemKey}+${childIndex}`}
-                                                    className="hover:bg-gray-200 p-2 rounded cursor-pointer ml-6"
+                                                    className={`${
+                                                        theme === "dark"
+                                                            ? "hover:bg-gray-700"
+                                                            : "hover:bg-gray-200"
+                                                    } p-2 rounded cursor-pointer pl-6`}
                                                 >
                                                     {child.name}
                                                 </li>
