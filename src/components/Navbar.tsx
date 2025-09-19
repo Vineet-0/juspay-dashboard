@@ -23,17 +23,21 @@ const Navbar = () => {
 
     return (
         <div
-            className={`h-40 ${
+            className={`h-18 ${
                 theme === "dark"
                     ? "bg-[#1C1C1C] text-white border-zinc-800"
                     : "bg-white text-black border-gray-100"
-            } border-b-2  flex items-center justify-between gap-5 px-6`}
+            } border-b-2 flex items-center justify-between gap-5 px-6`}
         >
             <div className="flex gap-4 items-center justify-end">
-                <button onClick={() => dispatch(toggleSidebar())} className="">
+                <button
+                    onClick={() => dispatch(toggleSidebar())}
+                    className=""
+                    title="Toggle Sidebar"
+                >
                     <PiSidebarDuotone size={24} />
                 </button>
-                <button className="">
+                <button className="" title="Star">
                     <PiStarDuotone size={24} />
                 </button>
                 <div className="text-md font-[300] opacity-40">Dashboard</div>
@@ -43,7 +47,7 @@ const Navbar = () => {
 
             <div className="flex gap-4 items-center justify-end flex-1">
                 <SearchBar />
-                <button onClick={toggleTheme} className="">
+                <button onClick={toggleTheme} className="" title="Toggle Theme">
                     {theme === "light" ? (
                         <PiSunDuotone size={24} />
                     ) : (
@@ -51,13 +55,17 @@ const Navbar = () => {
                     )}
                 </button>
 
-                <button className="">
+                <button className="" title="History">
                     <PiClockCounterClockwiseDuotone size={24} />
                 </button>
-                <button className="">
+                <button className="" title="Notifications">
                     <PiBellDuotone size={24} />
                 </button>
-                <button onClick={() => dispatch(toggleRightbar())} className="">
+                <button
+                    onClick={() => dispatch(toggleRightbar())}
+                    className=""
+                    title="Toggle Rightbar"
+                >
                     <PiSidebarDuotone size={24} />
                 </button>
             </div>
