@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { type RootState } from "../../store";
 import andilane from "../../assets/contacts/andilane.png";
 import drewcano from "../../assets/contacts/drewcano.png";
 import katemorrison from "../../assets/contacts/katemorrison.png";
@@ -6,6 +8,8 @@ import natalicraig from "../../assets/contacts/natalicraig.png";
 import orlandodiggs from "../../assets/contacts/orlandodiggs.png";
 
 const Contacts = () => {
+    const theme = useSelector((state: RootState) => state.theme);
+
     const Contacts = [
         {
             id: 1,
@@ -39,9 +43,15 @@ const Contacts = () => {
         },
     ];
     return (
-        <div className="max-h-1/3 p-3   flex-1 ">
+        <div className="max-h-1/3 p-3 flex-1 ">
             <h2 className="text-lg font-semibold mb-2">Contacts</h2>
-            <ul className="flex flex-col gap-2 h-[88%] overflow-y-auto">
+            <ul
+                className={`flex flex-col gap-2 h-[88%] overflow-y-auto ${
+                    theme === "dark"
+                        ? "scrollbar-custom-dark"
+                        : "scrollbar-custom-light"
+                }`}
+            >
                 {Contacts.map((contact) => (
                     <li
                         key={contact.id}

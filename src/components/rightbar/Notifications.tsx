@@ -1,5 +1,9 @@
+import { useSelector } from "react-redux";
+import { type RootState } from "../../store";
 import { PiBroadcast, PiBugBeetleLight, PiUser } from "react-icons/pi";
 const Notifications = () => {
+    const theme = useSelector((state: RootState) => state.theme);
+
     const notifications = [
         {
             id: 1,
@@ -33,7 +37,13 @@ const Notifications = () => {
     return (
         <div className="max-h-1/3 p-3 flex-1">
             <h2 className="text-lg font-semibold mb-2">Notifications</h2>
-            <ul className="flex flex-col gap-2 h-[88%] overflow-y-auto">
+            <ul
+                className={`flex flex-col gap-2 h-[88%] overflow-y-auto ${
+                    theme === "dark"
+                        ? "scrollbar-custom-dark"
+                        : "scrollbar-custom-light"
+                }`}
+            >
                 {notifications.map((notification) => (
                     <li
                         key={notification.id}
