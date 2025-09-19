@@ -73,8 +73,7 @@ const Dashboard = () => {
                 <ECommerceCard
                     title={"Growth"}
                     count={"1,000"}
-                    grow
-                    th={"+23%"}
+                    growth={"+23%"}
                     textColor={"black"}
                     color={theme === "dark" ? "#E5ECF6" : "#E5ECF6"}
                 />

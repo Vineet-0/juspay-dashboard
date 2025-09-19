@@ -1,6 +1,4 @@
-import { type RootState } from "../store";
 import { AiOutlineFall, AiOutlineRise } from "react-icons/ai";
-import { useSelector } from "react-redux";
 
 const ECommerceCard = ({
     title,
