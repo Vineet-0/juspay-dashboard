@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { type RootState } from "../store";
-import byewind from "../assets/byewind.png";
+import byewind from "../assets/ByeWind.png";
 
 const Sidebar = () => {
     const theme = useSelector((state: RootState) => state.theme);
