@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { type RootState } from "../store";
-import ByeWind from "../assets/Byewind.png";
+import byewind from "../assets/byewind.png";
 
 const Sidebar = () => {
     const theme = useSelector((state: RootState) => state.theme);
@@ -15,7 +15,7 @@ const Sidebar = () => {
         >
             <div className="h-[8%] w-full  px-6 py-3 flex items-center justify-start gap-4 font-semi text-lg">
                 <img
-                    src={ByeWind}
+                    src={byewind}
                     alt={`ByeWind Logo`}
                     className="w-8 h-8 rounded-full"
                 />
@@ -28,7 +28,6 @@ const Sidebar = () => {
                 <li className="hover:bg-gray-200 p-2 rounded">
                     Online Courses
                 </li>
-                
             </ul>
         </div>
     );
