@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { type RootState } from "./store";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
-import Rightbar from "./components/Rightbar";
+import Rightbar from "./components/rightbar/Rightbar";
 import Dashboard from "./pages/Dashboard/Dashboard";
 
 const App = () => {

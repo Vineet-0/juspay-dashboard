@@ -32,12 +32,15 @@ const SearchBar = () => {
 
     return (
         <div
+            style={{
+                backgroundColor: `${
+                    theme === "dark" ? "rgba(256, 256, 256, 0.05)" : "#f7f9fb"
+                }`,
+            }}
             className={`transition-all duration-300 ${
                 isFocused ? "flex-1" : "w-64"
             } ${
-                theme === "dark"
-                    ? "bg-[#404040] text-white"
-                    : "bg-gray-100 text-black"
+                theme === "dark" ? "text-white" : "text-black"
             } rounded-lg shadow px-2 py-1 flex items-center gap-1 `}
         >
             <PiMagnifyingGlass size={20} className="opacity-50" />
@@ -45,11 +48,13 @@ const SearchBar = () => {
                 ref={inputRef}
                 type="text"
                 placeholder="Search"
-                className={`bg-transparent outline-none flex-1 opacity-100 placeholder-opacity-50`}
+                className={`${
+                    theme === "dark" ? "placeholder-white" : "placeholder-black"
+                } bg-transparent outline-none flex-1 opacity-100 placeholder-opacity-50`}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
             />
-            <PiCommand size={20} className="opacity-50" />{" "}
+            <PiCommand size={20} className="opacity-50" />
             <div className="opacity-50">/</div>
         </div>
     );
