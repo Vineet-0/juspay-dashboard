@@ -1,3 +1,61 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* Set global font to Inter */
+body {
+    font-family: "Inter", sans-serif;
+}
+
+body.light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.dark {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+body.system {
+    background-color: #f0f0f0; /* Example for system theme */
+    color: #333333;
+}
+
+/* Custom scrollbar styles for light and dark themes */
+.scrollbar-custom-light {
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4c4 #f0f0f0;
+}
+
+.scrollbar-custom-light::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.scrollbar-custom-light::-webkit-scrollbar-thumb {
+    background-color: white;
+    border-radius: 4px;
+}
+
+.scrollbar-custom-light::-webkit-scrollbar-track {
+    background-color: white;
+}
+
+.scrollbar-custom-dark {
+    scrollbar-width: thin;
+    scrollbar-color: #606060 #1c1c1c;
+}
+
+.scrollbar-custom-dark::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.scrollbar-custom-dark::-webkit-scrollbar-thumb {
+    background-color: #606060;
+    border-radius: 4px;
+}
+
+.scrollbar-custom-dark::-webkit-scrollbar-track {
+    background-color: #1c1c1c;
+}
