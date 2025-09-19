@@ -12,10 +12,9 @@ const ECommerceCard = ({
     title: string;
     count: string;
     growth: string;
-    color?: string;
-    textColor?: string;
+    color: string;
+    textColor: string;
 }) => {
-    const theme = useSelector((state: RootState) => state.theme);
     return (
         <div
             style={{ color: textColor, backgroundColor: color }}
