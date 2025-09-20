@@ -43,32 +43,36 @@ const Contacts = () => {
         },
     ];
     return (
-        <div className="p-3 pb-5">
-            <h2 className="text-lg font-semibold mb-3">Contacts</h2>
-            <ul
-                className={`flex flex-col gap-2 h-[88%] ${
-                    theme === "dark"
-                        ? "scrollbar-custom-dark"
-                        : "scrollbar-custom-light"
-                }`}
+        <div className="flex flex-col">
+            <h2
+                className={`${
+                    theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
+                } px-[4px] py-[8px] rounded-[8px] text-[14px] font-[600]`}
             >
+                Contacts
+            </h2>
+            <ul>
                 {Contacts.map((contact) => (
                     <li
                         key={contact.id}
-                        className="p-1  flex items-center gap-2"
+                        className="p-[4px] mt-[8px] rounded-[8px] flex items-center gap-[8px] "
                     >
-                        <div className={`rounded-lg p-1 text-black`}>
+                        <div className={`rounded-[8px] p-[4px]`}>
                             <img
                                 src={contact.image}
                                 alt={contact.name}
-                                className="w-8 h-8 rounded-full"
+                                className="w-[24px] h-[24px] rounded-[80px]"
                             />
                         </div>
-                        <div>
-                            <p className="text-sm font-medium">
-                                {contact.name}
-                            </p>
-                        </div>
+                        <p
+                            className={`${
+                                theme === "dark"
+                                    ? "text-[#FFFFFF]"
+                                    : "text-[#1C1C1C]"
+                            } text-[14px] h-[20px] font-[400] overflow-hidden`}
+                        >
+                            {contact.name}
+                        </p>
                     </li>
                 ))}
             </ul>

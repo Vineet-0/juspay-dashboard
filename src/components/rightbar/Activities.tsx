@@ -42,44 +42,53 @@ const Activities = () => {
         },
     ];
     return (
-        <div className="p-3 pb-5">
-            <h2 className="text-lg font-semibold mb-3">Activities</h2>
-            <ul
-                className={`flex flex-col gap-2 h-[88%] ${
-                    theme === "dark"
-                        ? "scrollbar-custom-dark"
-                        : "scrollbar-custom-light"
-                }`}
+        <div className="flex flex-col">
+            <h2
+                className={`${
+                    theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
+                } px-[4px] py-[8px] rounded-[8px] text-[14px] font-[600]`}
             >
+                Activities
+            </h2>
+            <ul>
                 {Activities.map((activity) => (
                     <li
                         key={activity.id}
-                        className="p-1  flex items-center gap-2 relative"
+                        className="p-[4px] mt-[8px] rounded-[8px] flex items-center gap-[8px] relative "
                     >
-                        {/* {activity.id !== Activities.length && (
+                        {activity.id !== Activities.length && (
                             <div
-                                style={{
-                                    backgroundColor: `${
-                                        theme === "dark"
-                                            ? "#f7f9fb"
-                                            : "rgba(256, 256, 256, 0.05)"
-                                    }`,
-                                }}
-                                className="w-1 h-8 absolute top-10 left-[22px]"
+                                className={`${
+                                    theme === "dark"
+                                        ? "bg-[#FFFFFF]/[10%]"
+                                        : "bg-[#1C1C1C]/[10%]"
+                                } w-[1px] h-[14px] absolute left-[19px] top-[43px]`}
                             ></div>
-                        )} */}
-                        <div className={`rounded-lg p-1 text-black z-[1000]`}>
+                        )}
+                        <div className={`rounded-[8px] p-[4px]`}>
                             <img
                                 src={activity.image}
                                 alt={`activity-${activity.id}`}
-                                className="w-8 h-8 rounded-full"
+                                className="w-[24px] h-[24px] rounded-[80px]"
                             />
                         </div>
                         <div>
-                            <p className="text-sm font-medium">
+                            <p
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-[#FFFFFF]"
+                                        : "text-[#1C1C1C]"
+                                } text-[14px] h-[20px] font-[400] overflow-hidden`}
+                            >
                                 {activity.message}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-[#FFFFFF]/[40%]"
+                                        : "text-[#1C1C1C]/[40%]"
+                                } text-[12px] font-[400]`}
+                            >
                                 {activity.time}
                             </p>
                         </div>

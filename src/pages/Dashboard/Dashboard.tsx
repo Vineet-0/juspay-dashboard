@@ -17,49 +17,45 @@ const Dashboard = () => {
             y: 0,
             w: 1,
             h: 1,
+            color: theme === "dark" ? "#E3F5FF" : "#E3F5FF",
             component: (
                 <ECommerceCard
                     title={"Customers"}
                     count={"1,000"}
                     growth={"+23%"}
-                    textColor={"black"}
-                    color={theme === "dark" ? "#E3F5FF" : "#E3F5FF"}
+                    textColor={"#1C1C1C"}
                 />
             ),
         },
         {
             i: "box2",
-            x: 0,
-            y: 1,
+            x: 1,
+            y: 0,
             w: 1,
             h: 1,
+            color: theme === "dark" ? "rgba(255,255,255,0.05)" : "#F7F9FB",
             component: (
                 <ECommerceCard
                     title={"Revenue"}
                     count={"1,000"}
                     growth={"-23%"}
                     textColor={theme === "dark" ? "white" : "black"}
-                    color={
-                        theme === "dark" ? "rgb(256,256,256,0.05)" : "#F7F9FB"
-                    }
                 />
             ),
         },
         {
             i: "box3",
-            x: 1,
-            y: 0,
+            x: 0,
+            y: 1,
             w: 1,
             h: 1,
+            color: theme === "dark" ? "rgba(255,255,255,0.05)" : "#F7F9FB",
             component: (
                 <ECommerceCard
                     title={"Orders"}
                     count={"1,000"}
                     growth={"-23%"}
                     textColor={theme === "dark" ? "white" : "black"}
-                    color={
-                        theme === "dark" ? "rgb(256,256,256,0.05)" : "#F7F9FB"
-                    }
                 />
             ),
         },
@@ -69,13 +65,13 @@ const Dashboard = () => {
             y: 1,
             w: 1,
             h: 1,
+            color: theme === "dark" ? "#E5ECF6" : "#E5ECF6",
             component: (
                 <ECommerceCard
                     title={"Growth"}
                     count={"1,000"}
                     growth={"+23%"}
                     textColor={"black"}
-                    color={theme === "dark" ? "#E5ECF6" : "#E5ECF6"}
                 />
             ),
         },
@@ -97,23 +93,21 @@ const Dashboard = () => {
             breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
             cols={{ lg: 4, md: 4, sm: 4, xs: 2, xxs: 1 }}
             rowHeight={120}
-            isResizable={true}
+            isResizable={false}
             isDraggable={true}
-            margin={[30, 30]}
+            margin={[28, 28]}
         >
             {layout.map((item) => (
                 <div
                     key={item.i}
-                    style={{
-                        backgroundColor: `${
-                            theme === "dark"
-                                ? "rgba(256, 256, 256, 0.05)"
-                                : "#f7f9fb"
-                        }`,
-                    }}
-                    className={`rounded-xl border-0 flex items-center justify-center shadow-md overflow-hidden`}
+                    className={`${
+                        theme === "dark" ? "bg-[#FFFFFF]/[5%]" : "bg-[#F7F9FB]"
+                    } rounded-[16px] border-0 shadow-md overflow-hidden`}
+                    style={{ background: item?.color }}
                 >
-                    {item?.component}
+                    <div className="w-full h-full p-[24px]">
+                        {item?.component}
+                    </div>
                 </div>
             ))}
         </ResponsiveGridLayout>

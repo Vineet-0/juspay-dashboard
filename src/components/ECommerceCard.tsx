@@ -4,27 +4,25 @@ const ECommerceCard = ({
     title,
     count,
     growth,
-    color,
     textColor,
 }: {
     title: string;
     count: string;
     growth: string;
-    color: string;
     textColor: string;
 }) => {
     return (
         <div
-            style={{ color: textColor, backgroundColor: color }}
-            className={`w-full h-full p-6 flex flex-col items-center justify-between gap-2`}
+            style={{ color: textColor }}
+            className={`w-full h-full flex flex-col justify-between gap-2`}
         >
-            <div className="w-full flex flex-start font-[600]">{title}</div>
+            <div className="w-full flex flex-start text-[14px] font-[600]">
+                {title}
+            </div>
             <div className="flex w-full items-center justify-between">
-                <div className="text-3xl font-[700]">{count}</div>
+                <div className="text-[24px] font-[600]">{count}</div>
                 <div
-                    className={`flex items-center gap-1 text-s font-[400]  ${
-                        growth?.[0] === "-" ? "text-red-500" : " text-green-500"
-                    } `}
+                    className={`flex items-center gap-1 text-[12px] font-[400] `}
                 >
                     {growth}
                     {growth?.[0] === "-" ? (

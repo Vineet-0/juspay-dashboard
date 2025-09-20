@@ -9,11 +9,11 @@ const Rightbar = () => {
 
     return (
         <div
-            className={`w-64 h-screen py-2 ${
+            className={`w-[280px] h-screen p-[20px] ${
                 theme === "dark"
-                    ? "bg-[#1C1C1C] text-white border-zinc-800 scrollbar-custom-dark"
-                    : "bg-white text-black border-gray-100 scrollbar-custom-light"
-            } border-l-2 flex flex-col overflow-y-auto`}
+                    ? "border-[rgba(255,255,255,0.1)] scrollbar-custom-dark"
+                    : "border-[rgba(28,28,28,0.1)] scrollbar-custom-light"
+            } border-l-[1px] flex flex-col gap-[24px] overflow-y-auto`}
         >
             <Notifications />
             <Activities />
