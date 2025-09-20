@@ -54,7 +54,11 @@ const Activities = () => {
                 {Activities.map((activity) => (
                     <li
                         key={activity.id}
-                        className="p-[4px] mt-[8px] rounded-[8px] flex items-center gap-[8px] relative "
+                        className={`py-[4px] px-[8px] mt-[8px] rounded-[8px] flex items-center gap-[8px] relative ${
+                            theme === "dark"
+                                ? "hover:bg-[#F7F9FB]/[10%]"
+                                : "hover:bg-[#1C1C1C]/[5%]"
+                        }`}
                     >
                         {activity.id !== Activities.length && (
                             <div
@@ -62,7 +66,7 @@ const Activities = () => {
                                     theme === "dark"
                                         ? "bg-[#FFFFFF]/[10%]"
                                         : "bg-[#1C1C1C]/[10%]"
-                                } w-[1px] h-[14px] absolute left-[19px] top-[43px]`}
+                                } w-[1px] h-[14px] absolute left-[23px] top-[43px]`}
                             ></div>
                         )}
                         <div className={`rounded-[8px] p-[4px]`}>

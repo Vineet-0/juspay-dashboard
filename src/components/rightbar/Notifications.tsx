@@ -47,7 +47,11 @@ const Notifications = () => {
                 {notifications.map((notification) => (
                     <li
                         key={notification.id}
-                        className="p-[4px] mt-[8px] rounded-[8px] flex items-center gap-[8px] "
+                        className={`py-[4px] px-[8px] mt-[8px] rounded-[8px] flex items-center gap-[8px] ${
+                            theme === "dark"
+                                ? "hover:bg-[#F7F9FB]/[10%]"
+                                : "hover:bg-[#1C1C1C]/[5%]"
+                        }`}
                     >
                         <div
                             style={{

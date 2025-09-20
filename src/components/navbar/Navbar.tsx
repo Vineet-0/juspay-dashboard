@@ -11,6 +11,7 @@ import {
 } from "react-icons/pi";
 import { type RootState } from "../../store";
 import SearchBar from "./SearchBar";
+import BreadCrumb from "./BreadCrumb";
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -25,8 +26,8 @@ const Navbar = () => {
         <div
             className={`h-[68px] px-[28px] py-[20px] ${
                 theme === "dark"
-                    ? "border-[rgba(255,255,255,0.1)]"
-                    : "border-[rgba(28,28,28,0.1)]"
+                    ? "border-[#FFFFFF]/[10%]"
+                    : "border-[#1C1C1C]/[10%]"
             } border-b-[1px] flex items-center justify-between gap-5`}
         >
             <div className="flex items-center gap-[8px]">
@@ -53,35 +54,7 @@ const Navbar = () => {
                         <PiStarDuotone size={20} />
                     </button>
                 </div>
-                <div className="rounded-[8px] flex items-center gap-[8px]">
-                    <button
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%] hover:bg-[#FFFFFF]/[10%]"
-                                : "text-[#1C1C1C]/[40%] hover:bg-[#1C1C1C]/[5%]"
-                        } px-[8px] py-[4px] rounded-[8px] text-[14px] font-[400]`}
-                    >
-                        Dashboard
-                    </button>
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[20%] hover:bg-[#FFFFFF]/[10%]"
-                                : "text-[#1C1C1C]/[20%] hover:bg-[#1C1C1C]/[5%]"
-                        } text-[14px] font-[400] rounded-[8px]`}
-                    >
-                        /
-                    </div>
-                    <button
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF] hover:bg-[#FFFFFF]/[10%]"
-                                : "text-[#1C1C1C] hover:bg-[#1C1C1C]/[5%]"
-                        } px-[8px] py-[4px] rounded-[8px] text-[14px] font-[400]`}
-                    >
-                        Default
-                    </button>
-                </div>
+                <BreadCrumb />
             </div>
 
             <div className="flex items-center justify-end gap-[20px] flex-1">

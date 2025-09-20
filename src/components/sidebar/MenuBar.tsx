@@ -35,6 +35,7 @@ const MenuBar = ({
                             icon={item?.icon}
                             title={item?.name}
                             children={item?.children}
+                            path={item?.path}
                         />
                     ))}
             </ul>

@@ -1,9 +1,9 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
 // Load initial state from localStorage
 const initialState = {
     activeTab: localStorage.getItem("activeTab") ?? "11",
     openedTabs: JSON.parse(localStorage.getItem("openedTabs") ?? "[]"),
+    activePath: localStorage.getItem("activePath") ?? "/Dashboard/Default",
 };
 console.log(JSON.parse(localStorage.getItem("openedTab") ?? "[]"));
 
@@ -29,8 +29,14 @@ const sideBarSlice = createSlice({
                 JSON.stringify(state.openedTabs)
             ); // Persist to localStorage
         },
+        setActivePath: (state, action: PayloadAction<string>) => {
+            console.log(action.payload);
+            state.activePath = action.payload;
+            localStorage.setItem("activePath", action.payload);
+        },
     },
 });
 
-export const { setActiveTab, toggleOpenedTab } = sideBarSlice.actions;
+export const { setActiveTab, toggleOpenedTab, setActivePath } =
+    sideBarSlice.actions;
 export default sideBarSlice.reducer;

@@ -11,8 +11,8 @@ const Rightbar = () => {
         <div
             className={`w-[280px] h-screen p-[20px] ${
                 theme === "dark"
-                    ? "border-[rgba(255,255,255,0.1)] scrollbar-custom-dark"
-                    : "border-[rgba(28,28,28,0.1)] scrollbar-custom-light"
+                    ? "border-[#FFFFFF]/[10%] scrollbar-custom-dark"
+                    : "border-[#1C1C1C]/[10%] scrollbar-custom-light"
             } border-l-[1px] flex flex-col gap-[24px] overflow-y-auto`}
         >
             <Notifications />

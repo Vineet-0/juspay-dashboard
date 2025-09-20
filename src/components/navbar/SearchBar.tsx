@@ -32,13 +32,13 @@ const SearchBar = () => {
 
     return (
         <div
-            className={`transition-all duration-300 ${
-                isFocused ? "flex-1" : "w-[180px]"
+            className={`transition-all duration-600 w-[180px] ${
+                isFocused ? "flex-1" : ""
             } ${
                 theme === "dark"
                     ? "bg-[#ffffff]/[5%] text-white"
                     : "bg-[#1c1c1c]/[5%] text-black"
-            } rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1 `}
+            } hover:grow rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1 `}
         >
             <PiMagnifyingGlass
                 className={`${

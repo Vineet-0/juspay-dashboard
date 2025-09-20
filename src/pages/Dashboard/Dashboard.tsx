@@ -3,7 +3,7 @@ import "react-grid-layout/css/styles.css";
 import "react-resizable/css/styles.css";
 import { useSelector } from "react-redux";
 import { type RootState } from "../../store";
-import ECommerceCard from "../../components/ECommerceCard";
+import ECommerceCard from "../../components/dashboard/ECommerceCard";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
@@ -33,7 +33,7 @@ const Dashboard = () => {
             y: 0,
             w: 1,
             h: 1,
-            color: theme === "dark" ? "rgba(255,255,255,0.05)" : "#F7F9FB",
+            color: theme === "dark" ? "(255rgba,255,255,0.05)" : "#F7F9FB",
             component: (
                 <ECommerceCard
                     title={"Revenue"}
@@ -83,34 +83,47 @@ const Dashboard = () => {
     ];
 
     return (
-        <ResponsiveGridLayout
-            className={`layout ${
-                theme === "dark"
-                    ? "bg-[#1C1C1C] text-white"
-                    : "bg-white text-black"
-            }`}
-            layouts={{ lg: layout }}
-            breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-            cols={{ lg: 4, md: 4, sm: 4, xs: 2, xxs: 1 }}
-            rowHeight={120}
-            isResizable={false}
-            isDraggable={true}
-            margin={[28, 28]}
-        >
-            {layout.map((item) => (
-                <div
-                    key={item.i}
-                    className={`${
-                        theme === "dark" ? "bg-[#FFFFFF]/[5%]" : "bg-[#F7F9FB]"
-                    } rounded-[16px] border-0 shadow-md overflow-hidden`}
-                    style={{ background: item?.color }}
-                >
-                    <div className="w-full h-full p-[24px]">
-                        {item?.component}
+        <>
+            <div
+                className={`mt-[28px] ml-[28px] px-[8px] py-[4px] w-fit text-[14px] font-[600] rounded-[8px] ${
+                    theme === "dark"
+                        ? "text-[#FFFFFF] hover:bg-[#FFFFFF]/[10%]"
+                        : "text-[#1C1C1C] hover:bg-[#1C1C1C]/[10%]"
+                }`}
+            >
+                eCommerce
+            </div>
+            <ResponsiveGridLayout
+                className={`layout ${
+                    theme === "dark"
+                        ? "bg-[#1C1C1C] text-white"
+                        : "bg-white text-black"
+                }`}
+                layouts={{ lg: layout }}
+                breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
+                cols={{ lg: 4, md: 4, sm: 4, xs: 2, xxs: 1 }}
+                rowHeight={120}
+                isResizable={false}
+                isDraggable={true}
+                margin={[28, 28]}
+            >
+                {layout.map((item) => (
+                    <div
+                        key={item.i}
+                        className={`${
+                            theme === "dark"
+                                ? "bg-[#FFFFFF]/[5%]"
+                                : "bg-[#F7F9FB]"
+                        } rounded-[16px] border-0 shadow-md overflow-hidden`}
+                        style={{ background: item?.color }}
+                    >
+                        <div className="w-full h-full p-[24px]">
+                            {item?.component}
+                        </div>
                     </div>
-                </div>
-            ))}
-        </ResponsiveGridLayout>
+                ))}
+            </ResponsiveGridLayout>
+        </>
     );
 };
 

@@ -3,9 +3,9 @@ import { type RootState } from "../../store";
 import andilane from "../../assets/contacts/andilane.png";
 import drewcano from "../../assets/contacts/drewcano.png";
 import katemorrison from "../../assets/contacts/katemorrison.png";
-import korayokumus from "../../assets/contacts/korayokumus.png";
 import natalicraig from "../../assets/contacts/natalicraig.png";
 import orlandodiggs from "../../assets/contacts/orlandodiggs.png";
+import korayokumus from "../../assets/contacts/korayokumus.png";
 
 const Contacts = () => {
     const theme = useSelector((state: RootState) => state.theme);
@@ -55,7 +55,11 @@ const Contacts = () => {
                 {Contacts.map((contact) => (
                     <li
                         key={contact.id}
-                        className="p-[4px] mt-[8px] rounded-[8px] flex items-center gap-[8px] "
+                        className={`py-[4px] px-[8px] mt-[8px] rounded-[8px] flex items-center gap-[8px] ${
+                            theme === "dark"
+                                ? "hover:bg-[#F7F9FB]/[10%]"
+                                : "hover:bg-[#1C1C1C]/[5%]"
+                        }`}
                     >
                         <div className={`rounded-[8px] p-[4px]`}>
                             <img

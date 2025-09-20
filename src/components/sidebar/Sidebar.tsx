@@ -6,10 +6,11 @@ import {
     PiBookOpenDuotone,
     PiChartPieSliceDuotone,
     PiChatsTeardropDuotone,
-    PiDotOutlineFill,
+    PiCircleFill,
     PiFolderDuotone,
     PiIdentificationBadgeDuotone,
     PiIdentificationCardDuotone,
+    PiListChecksDuotone,
     PiNotebookDuotone,
     PiShoppingBagOpenDuotone,
     PiUsersThreeDuotone,
@@ -24,22 +25,33 @@ const Sidebar = () => {
             menu: [
                 {
                     name: "Default",
+                    path: "Dashboard/Default",
                     icon: <PiChartPieSliceDuotone size={18} />,
                     id: "1",
                     children: [],
                 },
                 {
-                    name: "eCommerce",
-                    icon: <PiShoppingBagOpenDuotone size={18} />,
+                    name: "Order List",
+                    path: "Dashboard/Order List",
+                    icon: <PiListChecksDuotone size={18} />,
                     id: "2",
+                    children: [],
+                },
+                {
+                    name: "eCommerce",
+                    path: "Dashboard/eCommerce",
+                    icon: <PiShoppingBagOpenDuotone size={18} />,
+                    id: "3",
                     children: [
                         {
                             name: "Option-1",
+                            path: "Dashboard/eCommerce/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "Dashboard/eCommerce/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -47,16 +59,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Projects",
+                    path: "Dashboard/Projects",
                     icon: <PiFolderDuotone size={18} />,
-                    id: "3",
+                    id: "4",
                     children: [
                         {
                             name: "Option-1",
+                            path: "Dashboard/Projects/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "Dashboard/Projects/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -64,16 +79,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Online Courses",
+                    path: "Dashboard/Online Courses",
                     icon: <PiBookOpenDuotone size={18} />,
-                    id: "4",
+                    id: "5",
                     children: [
                         {
                             name: "Option-1",
+                            path: "Dashboard/Online Courses/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "Dashboard/Online Courses/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -87,31 +105,37 @@ const Sidebar = () => {
             menu: [
                 {
                     name: "User Profile",
+                    path: "User Profile/User Profile",
                     icon: <PiIdentificationBadgeDuotone size={18} />,
                     id: "1",
                     children: [
                         {
                             name: "Overview",
+                            path: "User Profile/User Profile/Overview",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Projects",
+                            path: "User Profile/User Profile/Projects",
                             id: "2",
                             children: [],
                         },
                         {
                             name: "Campaigns",
+                            path: "User Profile/User Profile/Campaigns",
                             id: "3",
                             children: [],
                         },
                         {
                             name: "Documents",
+                            path: "User Profile/User Profile/Documents",
                             id: "4",
                             children: [],
                         },
                         {
                             name: "Followers",
+                            path: "User Profile/User Profile/Followers",
                             id: "5",
                             children: [],
                         },
@@ -119,16 +143,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Account",
+                    path: "User Profile/Account",
                     icon: <PiIdentificationCardDuotone size={18} />,
                     id: "2",
                     children: [
                         {
                             name: "Option-1",
+                            path: "User Profile/Account/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "User Profile/Account/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -136,16 +163,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Corporate",
+                    path: "User Profile/Corporate",
                     icon: <PiUsersThreeDuotone size={18} />,
                     id: "3",
                     children: [
                         {
                             name: "Option-1",
+                            path: "User Profile/Corporate/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "User Profile/Corporate/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -153,16 +183,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Blog",
+                    path: "User Profile/Blog",
                     icon: <PiNotebookDuotone size={18} />,
                     id: "4",
                     children: [
                         {
                             name: "Option-1",
+                            path: "User Profile/Blog/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "User Profile/Blog/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -170,16 +203,19 @@ const Sidebar = () => {
                 },
                 {
                     name: "Social",
+                    path: "User Profile/Social",
                     icon: <PiChatsTeardropDuotone size={18} />,
                     id: "5",
                     children: [
                         {
                             name: "Option-1",
+                            path: "User Profile/Option-1",
                             id: "1",
                             children: [],
                         },
                         {
                             name: "Option-2",
+                            path: "User Profile/Option-2",
                             id: "2",
                             children: [],
                         },
@@ -191,10 +227,10 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`w-[212px] h-screen px-[16px] py-[20px] flex flex-col border-r-[1px] gap-[16px] ${
+            className={`w-[212px] h-screen px-[16px] pt-[20px] pb-[10px] flex flex-col border-r-[1px] gap-[16px] ${
                 theme === "dark"
-                    ? " border-[rgba(255,255,255,0.1)]"
-                    : "border-[rgba(28,28,28,0.1)]"
+                    ? "border-[#FFFFFF]/[10%]"
+                    : "border-[#1C1C1C]/[10%]"
             }`}
         >
             <div className="w-full h-[32px] p-[4px] flex items-center justify-start gap-[8px] text-[14px] font-[400]">
@@ -247,9 +283,9 @@ const Sidebar = () => {
                                     : "hover:bg-[#F7F9FB]/[5%]"
                             } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
                         >
-                            <div className="flex items-center gap-[4px]">
-                                <PiDotOutlineFill
-                                    size={18}
+                            <div className="flex items-center gap-[6px]">
+                                <PiCircleFill
+                                    size={8}
                                     className={`${
                                         theme === "dark"
                                             ? "text-[#FFFFFF]/[20%]"
@@ -274,9 +310,9 @@ const Sidebar = () => {
                                     : "hover:bg-[#F7F9FB]/[5%]"
                             } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
                         >
-                            <div className="flex items-center gap-[4px]">
-                                <PiDotOutlineFill
-                                    size={18}
+                            <div className="flex items-center gap-[6px]">
+                                <PiCircleFill
+                                    size={8}
                                     className={`${
                                         theme === "dark"
                                             ? "text-[#FFFFFF]/[20%]"

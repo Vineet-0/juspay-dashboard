@@ -2,18 +2,25 @@ import { type RootState } from "../../store";
 import React from "react";
 import { PiCaretDownBold, PiCaretRightBold } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTab, toggleOpenedTab } from "../../store/sidebarSlice";
+import {
+    setActivePath,
+    setActiveTab,
+    toggleOpenedTab,
+} from "../../store/sidebarSlice";
+import { useNavigate } from "react-router-dom";
 
 const MenuItem = ({
     newKey,
     icon,
     title,
     children,
+    path,
 }: {
     newKey: string;
     icon: any;
     title: "string";
     children: any;
+    path: string;
 }) => {
     console.log(newKey, title);
     const theme = useSelector((state: RootState) => state.theme);
@@ -21,6 +28,7 @@ const MenuItem = ({
         (state: RootState) => state.sideBar
     );
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     return (
         <React.Fragment key={newKey}>
             <button
@@ -35,8 +43,11 @@ const MenuItem = ({
                         : "bg-[#1C1C1C]/[5%]")
                 } w-full h-[28px] mt-[4px] rounded-[8px] cursor-pointer flex justify-flex-start items-center relative`}
                 onClick={() => {
+                    console.log(path);
+                    dispatch(setActivePath(path));
                     dispatch(toggleOpenedTab(newKey));
                     dispatch(setActiveTab(newKey));
+                    navigate(path?.split(" ")?.join("")?.toLowerCase());
                 }}
             >
                 {activeTab === newKey && (
@@ -48,7 +59,7 @@ const MenuItem = ({
                 )}
                 {children && children.length > 0 ? (
                     <span className="opacity-50 flex items-center justify-center w-[24px]">
-                        {false ? (
+                        {openedTabs?.includes(newKey) ? (
                             <PiCaretDownBold
                                 className={`${
                                     theme === "dark"
@@ -83,6 +94,7 @@ const MenuItem = ({
                                 icon={child?.icon}
                                 title={child?.name}
                                 children={child?.children}
+                                path={child?.path}
                             />
                         ))}
                     </ul>
