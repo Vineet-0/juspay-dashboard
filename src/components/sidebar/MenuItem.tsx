@@ -24,6 +24,7 @@ const MenuItem = ({
 }) => {
     console.log(newKey, title);
     const theme = useSelector((state: RootState) => state.theme);
+    const { sidebarOpen } = useSelector((state: RootState) => state.layout);
     const { activeTab, openedTabs } = useSelector(
         (state: RootState) => state.sideBar
     );
@@ -41,7 +42,9 @@ const MenuItem = ({
                     (theme === "dark"
                         ? "bg-[#F7F9FB]/[10%]"
                         : "bg-[#1C1C1C]/[5%]")
-                } w-full h-[28px] mt-[4px] rounded-[8px] cursor-pointer flex justify-flex-start items-center relative`}
+                } ${
+                    sidebarOpen ? "mt-[4px] h-[28px]" : "p-[4px] h-[35px]"
+                }  w-full rounded-[8px] cursor-pointer flex justify-flex-start items-center relative`}
                 onClick={() => {
                     console.log(path);
                     dispatch(setActivePath(path));
@@ -54,10 +57,10 @@ const MenuItem = ({
                     <div
                         className={`w-[4px] h-[16px] rounded-xl absolute ${
                             theme === "dark" ? "bg-[#C6C7F8]" : "bg-[#1C1C1C]"
-                        }`}
-                    ></div>
+                        } left-0`}
+                    />
                 )}
-                {children && children.length > 0 ? (
+                {sidebarOpen && children && children.length > 0 ? (
                     <span className="opacity-50 flex items-center justify-center w-[24px]">
                         {openedTabs?.includes(newKey) ? (
                             <PiCaretDownBold
@@ -78,12 +81,15 @@ const MenuItem = ({
                         )}
                     </span>
                 ) : (
-                    <span className="w-[24px]"></span>
+                    sidebarOpen && <span className="w-[24px]"></span>
                 )}
                 {icon && icon}
-                <span className="px-[4px] py-[8px]">{title}</span>
+                {sidebarOpen && (
+                    <span className="px-[4px] py-[8px]">{title}</span>
+                )}
             </button>
-            {openedTabs?.includes(newKey) &&
+            {sidebarOpen &&
+                openedTabs?.includes(newKey) &&
                 children &&
                 children.length > 0 && (
                     <ul className="pl-4">

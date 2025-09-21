@@ -733,7 +733,7 @@ export function OrderListTable() {
                     ) : null}
                 </div>
                 <div
-                    className={`transition-all duration-600 w-[180px] ${
+                    className={`transition-all duration-600 w-[200px] ${
                         theme === "dark"
                             ? "bg-[#1c1c1c]/[40%] border-[#ffffff]/[10%] text-white"
                             : "bg-[#ffffff]/[40%] border-[#1c1c1c]/[10%] text-black"
@@ -749,7 +749,7 @@ export function OrderListTable() {
                     />
                     <input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Search by Project Name"
                         className={`text-[14px] font-[400] ${
                             theme === "dark"
                                 ? "text-[#FFFFFF] placeholder-white"
@@ -757,12 +757,12 @@ export function OrderListTable() {
                         } bg-transparent outline-none w-full`}
                         value={
                             (table
-                                .getColumn("status")
+                                .getColumn("project")
                                 ?.getFilterValue() as string) ?? ""
                         }
                         onChange={(event) =>
                             table
-                                .getColumn("status")
+                                .getColumn("project")
                                 ?.setFilterValue(event.target.value)
                         }
                     />

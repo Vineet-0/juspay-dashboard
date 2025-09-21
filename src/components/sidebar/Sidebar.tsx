@@ -18,6 +18,7 @@ import {
 
 const Sidebar = () => {
     const theme = useSelector((state: RootState) => state.theme);
+    const { sidebarOpen } = useSelector((state: RootState) => state.layout);
     const sideBarMenu = [
         {
             name: "Dashboard",
@@ -26,21 +27,27 @@ const Sidebar = () => {
                 {
                     name: "Default",
                     path: "Dashboard/Default",
-                    icon: <PiChartPieSliceDuotone size={18} />,
+                    icon: (
+                        <PiChartPieSliceDuotone size={sidebarOpen ? 18 : 25} />
+                    ),
                     id: "1",
                     children: [],
                 },
                 {
                     name: "Order List",
                     path: "Dashboard/Order List",
-                    icon: <PiListChecksDuotone size={18} />,
+                    icon: <PiListChecksDuotone size={sidebarOpen ? 18 : 25} />,
                     id: "2",
                     children: [],
                 },
                 {
                     name: "eCommerce",
                     path: "Dashboard/eCommerce",
-                    icon: <PiShoppingBagOpenDuotone size={18} />,
+                    icon: (
+                        <PiShoppingBagOpenDuotone
+                            size={sidebarOpen ? 18 : 25}
+                        />
+                    ),
                     id: "3",
                     children: [
                         {
@@ -60,7 +67,7 @@ const Sidebar = () => {
                 {
                     name: "Projects",
                     path: "Dashboard/Projects",
-                    icon: <PiFolderDuotone size={18} />,
+                    icon: <PiFolderDuotone size={sidebarOpen ? 18 : 25} />,
                     id: "4",
                     children: [
                         {
@@ -80,7 +87,7 @@ const Sidebar = () => {
                 {
                     name: "Online Courses",
                     path: "Dashboard/Online Courses",
-                    icon: <PiBookOpenDuotone size={18} />,
+                    icon: <PiBookOpenDuotone size={sidebarOpen ? 18 : 25} />,
                     id: "5",
                     children: [
                         {
@@ -106,7 +113,11 @@ const Sidebar = () => {
                 {
                     name: "User Profile",
                     path: "User Profile/User Profile",
-                    icon: <PiIdentificationBadgeDuotone size={18} />,
+                    icon: (
+                        <PiIdentificationBadgeDuotone
+                            size={sidebarOpen ? 18 : 25}
+                        />
+                    ),
                     id: "1",
                     children: [
                         {
@@ -144,7 +155,11 @@ const Sidebar = () => {
                 {
                     name: "Account",
                     path: "User Profile/Account",
-                    icon: <PiIdentificationCardDuotone size={18} />,
+                    icon: (
+                        <PiIdentificationCardDuotone
+                            size={sidebarOpen ? 18 : 25}
+                        />
+                    ),
                     id: "2",
                     children: [
                         {
@@ -164,7 +179,7 @@ const Sidebar = () => {
                 {
                     name: "Corporate",
                     path: "User Profile/Corporate",
-                    icon: <PiUsersThreeDuotone size={18} />,
+                    icon: <PiUsersThreeDuotone size={sidebarOpen ? 18 : 25} />,
                     id: "3",
                     children: [
                         {
@@ -184,7 +199,7 @@ const Sidebar = () => {
                 {
                     name: "Blog",
                     path: "User Profile/Blog",
-                    icon: <PiNotebookDuotone size={18} />,
+                    icon: <PiNotebookDuotone size={sidebarOpen ? 18 : 25} />,
                     id: "4",
                     children: [
                         {
@@ -204,7 +219,9 @@ const Sidebar = () => {
                 {
                     name: "Social",
                     path: "User Profile/Social",
-                    icon: <PiChatsTeardropDuotone size={18} />,
+                    icon: (
+                        <PiChatsTeardropDuotone size={sidebarOpen ? 18 : 25} />
+                    ),
                     id: "5",
                     children: [
                         {
@@ -227,111 +244,125 @@ const Sidebar = () => {
 
     return (
         <div
-            className={`w-[212px] h-screen px-[16px] pt-[20px] pb-[10px] flex flex-col border-r-[1px] gap-[16px] ${
+            className={`${
+                sidebarOpen ? "w-[212px] px-[16px]" : "fit px-[12px]"
+            } transition-all duration-600 h-screen  pt-[20px] pb-[10px] flex flex-col border-r-[1px] gap-[16px] ${
                 theme === "dark"
                     ? "border-[#FFFFFF]/[10%]"
                     : "border-[#1C1C1C]/[10%]"
             }`}
         >
-            <div className="w-full h-[32px] p-[4px] flex items-center justify-start gap-[8px] text-[14px] font-[400]">
+            {sidebarOpen ? (
+                <div className="w-full h-[32px] p-[4px] flex items-center justify-start gap-[8px] text-[14px] font-[400]">
+                    <img
+                        src={byewind}
+                        alt={`ByeWind Logo`}
+                        className="w-[24px] h-[24px] rounded-full"
+                    />
+                    ByeWind
+                </div>
+            ) : (
                 <img
                     src={byewind}
                     alt={`ByeWind Logo`}
-                    className="w-[24px] h-[24px] rounded-full"
+                    className="w-[35px] h-[35px] rounded-full mb-4 transition-all duration-600"
                 />
-                ByeWind
-            </div>
+            )}
             <div
                 className={`flex flex-col flex-1 ${
                     theme === "dark"
                         ? "scrollbar-custom-dark"
                         : "scrollbar-custom-light"
-                } overflow-y-auto flex flex-col items-center justify-items-start gap-[16px]`}
+                } overflow-y-auto flex flex-col items-center justify-items-start transition-all duration-600 ${
+                    sidebarOpen ? " gap-[16px]" : "gap-[6px]"
+                }`}
             >
-                <div className="w-full pb-[12px]">
-                    <div
-                        className={`w-full mb-2 flex items-center justify-around text-[14px] font-[400] ${
-                            theme === "dark"
-                                ? "text-white opacity-60"
-                                : "text-black opacity-40"
-                        } `}
-                    >
-                        <button
-                            className={`${
+                {sidebarOpen && (
+                    <div className="w-full pb-[12px]">
+                        <div
+                            className={`w-full mb-2 flex items-center justify-around text-[14px] font-[400] ${
                                 theme === "dark"
-                                    ? "text-[#FFFFFF]/[40%] hover:bg-[#F7F9FB]/[10%]"
-                                    : "text-[#1C1C1C]/[40%] hover:bg-[#1C1C1C]/[5%]"
-                            } px-[8px] py-[4px] rounded-[8px]`}
+                                    ? "text-white opacity-60"
+                                    : "text-black opacity-40"
+                            } `}
                         >
-                            Favorites
-                        </button>
-                        <button
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]/[40%] hover:bg-[#F7F9FB]/[10%]"
-                                    : "text-[#1C1C1C]/[40%] hover:bg-[#1C1C1C]/[5%]"
-                            } px-[8px] py-[4px] rounded-[8px]`}
-                        >
-                            Recently
-                        </button>
+                            <button
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-[#FFFFFF]/[40%] hover:bg-[#F7F9FB]/[10%]"
+                                        : "text-[#1C1C1C]/[40%] hover:bg-[#1C1C1C]/[5%]"
+                                } px-[8px] py-[4px] rounded-[8px]`}
+                            >
+                                Favorites
+                            </button>
+                            <button
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-[#FFFFFF]/[40%] hover:bg-[#F7F9FB]/[10%]"
+                                        : "text-[#1C1C1C]/[40%] hover:bg-[#1C1C1C]/[5%]"
+                                } px-[8px] py-[4px] rounded-[8px]`}
+                            >
+                                Recently
+                            </button>
+                        </div>
+                        <ul>
+                            <li
+                                className={`${
+                                    theme === "dark"
+                                        ? "hover:bg-[#F7F9FB]/[10%]"
+                                        : "hover:bg-[#F7F9FB]/[5%]"
+                                } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
+                            >
+                                <div className="flex items-center gap-[6px]">
+                                    <PiCircleFill
+                                        size={8}
+                                        className={`${
+                                            theme === "dark"
+                                                ? "text-[#FFFFFF]/[20%]"
+                                                : "text-[#1C1C1C]/[20%]"
+                                        }`}
+                                    />
+                                    <div
+                                        className={`${
+                                            theme === "dark"
+                                                ? "text-[#FFFFFF]"
+                                                : "text-[#1C1C1C]"
+                                        }`}
+                                    >
+                                        Overview
+                                    </div>
+                                </div>
+                            </li>
+                            <li
+                                className={`${
+                                    theme === "dark"
+                                        ? "hover:bg-[#F7F9FB]/[10%]"
+                                        : "hover:bg-[#F7F9FB]/[5%]"
+                                } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
+                            >
+                                <div className="flex items-center gap-[6px]">
+                                    <PiCircleFill
+                                        size={8}
+                                        className={`${
+                                            theme === "dark"
+                                                ? "text-[#FFFFFF]/[20%]"
+                                                : "text-[#1C1C1C]/[20%]"
+                                        }`}
+                                    />
+                                    <div
+                                        className={`${
+                                            theme === "dark"
+                                                ? "text-[#FFFFFF]"
+                                                : "text-[#1C1C1C]"
+                                        }`}
+                                    >
+                                        Projects
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <ul>
-                        <li
-                            className={`${
-                                theme === "dark"
-                                    ? "hover:bg-[#F7F9FB]/[10%]"
-                                    : "hover:bg-[#F7F9FB]/[5%]"
-                            } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
-                        >
-                            <div className="flex items-center gap-[6px]">
-                                <PiCircleFill
-                                    size={8}
-                                    className={`${
-                                        theme === "dark"
-                                            ? "text-[#FFFFFF]/[20%]"
-                                            : "text-[#1C1C1C]/[20%]"
-                                    }`}
-                                />
-                                <div
-                                    className={`${
-                                        theme === "dark"
-                                            ? "text-[#FFFFFF]"
-                                            : "text-[#1C1C1C]"
-                                    }`}
-                                >
-                                    Overview
-                                </div>
-                            </div>
-                        </li>
-                        <li
-                            className={`${
-                                theme === "dark"
-                                    ? "hover:bg-[#F7F9FB]/[10%]"
-                                    : "hover:bg-[#F7F9FB]/[5%]"
-                            } m-0 px-[8px] py-[4px] text-[14px] font-[400] rounded cursor-pointer`}
-                        >
-                            <div className="flex items-center gap-[6px]">
-                                <PiCircleFill
-                                    size={8}
-                                    className={`${
-                                        theme === "dark"
-                                            ? "text-[#FFFFFF]/[20%]"
-                                            : "text-[#1C1C1C]/[20%]"
-                                    }`}
-                                />
-                                <div
-                                    className={`${
-                                        theme === "dark"
-                                            ? "text-[#FFFFFF]"
-                                            : "text-[#1C1C1C]"
-                                    }`}
-                                >
-                                    Projects
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                )}
                 {[
                     sideBarMenu.map((menu: any, index: number) => (
                         <MenuBar

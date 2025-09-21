@@ -9,9 +9,6 @@ import OrderList from "./pages/OrderList/OrderList";
 
 const App = () => {
     const theme = useSelector((state: RootState) => state.theme);
-    const { sidebarOpen, rightbarOpen } = useSelector(
-        (state: RootState) => state.layout
-    );
 
     return (
         <Router>
@@ -20,9 +17,9 @@ const App = () => {
                     theme === "dark"
                         ? "bg-[#1C1C1C] text-white"
                         : "bg-[#FFFFFF] text-black"
-                } w-full h-full max-h-screen overflow-hidden`}
+                } w-full h-full max-h-screen overflow-auto`}
             >
-                {sidebarOpen && <Sidebar />}
+                <Sidebar />
                 <div className="flex-1 flex flex-col">
                     <Navbar />
                     <div
@@ -42,11 +39,11 @@ const App = () => {
                                 path="/dashboard/orderlist"
                                 element={<OrderList />}
                             />
-                            <Route path="*" element={<OrderList />} />
+                            <Route path="*" element={<Dashboard />} />
                         </Routes>
                     </div>
                 </div>
-                {rightbarOpen && <Rightbar />}
+                <Rightbar />
             </div>
         </Router>
     );
