@@ -7,6 +7,9 @@ import {
 } from "@/components/ui/card";
 import { type ChartConfig, ChartContainer } from "@/components/ui/chart";
 
+import LightGlobe from "@/assets/lightGlobe.png";
+import DarkGlobe from "@/assets/darkGlobe.png";
+
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store";
 import ChartExample from ".";
@@ -84,9 +87,13 @@ export default function ChartMapPoint() {
                 </CardTitle>
             </CardHeader>
             <CardContent className="p-0 mt-[-10px] flex w-full  max-h-[345px]">
-                <ChartContainer config={chartConfig} className="mx-auto w-full">
+                <img
+                    src={theme === "dark" ? DarkGlobe : LightGlobe}
+                    alt="globe images"
+                />
+                {/* <ChartContainer config={chartConfig} className="mx-auto w-full">
                     <ChartExample />
-                </ChartContainer>
+                </ChartContainer> */}
             </CardContent>
             <CardFooter className="flex-col gap-2 text-sm p-0">
                 {mapData.map((item, index) => {

@@ -387,6 +387,50 @@ export type OrderList = {
     status: "In Process" | "Complete" | "Pending" | "Approved" | "Rejected";
 };
 
+export const CommonHeader = ({
+    column,
+    title,
+}: {
+    column: any;
+    title: string;
+}) => {
+    const theme = useSelector((state: RootState) => state.theme);
+    const [isHovered, setIsHovered] = React.useState(false);
+
+    return (
+        <div
+            className="flex items-center gap-[10px] relative"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
+            <div
+                className={`${
+                    theme === "dark"
+                        ? "text-[#FFFFFF]/[40%]"
+                        : "text-[#1C1C1C]/[40%]"
+                } `}
+            >
+                {title}
+            </div>
+            {isHovered && (
+                <button
+                    className={`w-[24px] h-[24px] p-[4px] gap-[4px] rounded-[8px] ${
+                        theme === "dark"
+                            ? "text-[#FFFFFF] hover:bg-[#FFFFFF]/[10%]"
+                            : "text-[#1C1C1C] hover:bg-[#1C1C1C]/[5%]"
+                    }`}
+                    title="Sort"
+                    onClick={() =>
+                        column.toggleSorting(column.getIsSorted() === "asc")
+                    }
+                >
+                    <PiArrowsDownUp size={16} />
+                </button>
+            )}
+        </div>
+    );
+};
+
 export function OrderListTable() {
     const [sorting, setSorting] = React.useState<SortingState>([]);
     const [columnFilters, setColumnFilters] =
@@ -431,40 +475,21 @@ export function OrderListTable() {
         },
         {
             accessorKey: "orderId",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Order ID
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="Order ID" />
+            ),
+
             cell: ({ row }) => (
-                <div className="capitalize">#{row.getValue("orderId")}</div>
+                <div className="capitalize min-w-[90px]">
+                    #{row.getValue("orderId")}
+                </div>
             ),
         },
         {
             accessorKey: "name",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        User
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="User" />
+            ),
             cell: ({ row }) => (
                 <div className="capitalize flex items-center gap-[4px]">
                     <div className={`rounded-[8px] p-[4px]`}>
@@ -496,40 +521,18 @@ export function OrderListTable() {
         },
         {
             accessorKey: "project",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Project
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="Project" />
+            ),
             cell: ({ row }) => (
                 <div className="capitalize">{row.getValue("project")}</div>
             ),
         },
         {
             accessorKey: "address",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } `}
-                    >
-                        Address
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="Address" />
+            ),
             cell: ({ row }) => (
                 <div className="capitalize flex items-center gap-[4px] relative w-fit">
                     {row.getValue("address")}{" "}
@@ -551,20 +554,9 @@ export function OrderListTable() {
         },
         {
             accessorKey: "date",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Date
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="Date" />
+            ),
             cell: ({ row }) => (
                 <div className="capitalize flex items-center gap-[4px]">
                     <PiCalendarBlank size={16} />
@@ -574,20 +566,9 @@ export function OrderListTable() {
         },
         {
             accessorKey: "status",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Status
-                    </div>
-                );
-            },
+            header: ({ column }) => (
+                <CommonHeader column={column} title="Status" />
+            ),
             cell: ({ row }) => {
                 const theme = useSelector((state: RootState) => state.theme);
                 const StatusColor: Record<OrderList["status"], string> = {
@@ -622,7 +603,11 @@ export function OrderListTable() {
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="ghost"
-                                className="h-8 w-[48px] p-0"
+                                className={`h-8 w-[48px] p-0 ${
+                                    theme === "dark"
+                                        ? " hover:bg-[#FFFFFF]/[10%] hover:text-white"
+                                        : " hover:bg-[#1C1C1C]/[5%]"
+                                }`}
                             >
                                 <span className="sr-only">Open menu</span>
                                 <MoreHorizontal />
@@ -682,7 +667,7 @@ export function OrderListTable() {
                                 ? "hover:bg-[#FFFFFF]/[10%]"
                                 : "hover:bg-[#1C1C1C]/[5%]"
                         }`}
-                        title="Toggle Sidebar"
+                        title="Add"
                     >
                         <PiPlus size={20} />
                     </button>
@@ -692,7 +677,7 @@ export function OrderListTable() {
                                 ? "hover:bg-[#FFFFFF]/[10%]"
                                 : "hover:bg-[#1C1C1C]/[5%]"
                         }`}
-                        title="Star"
+                        title="Filter"
                     >
                         <PiFunnelSimple size={20} />
                     </button>
@@ -702,10 +687,50 @@ export function OrderListTable() {
                                 ? "hover:bg-[#FFFFFF]/[10%]"
                                 : "hover:bg-[#1C1C1C]/[5%]"
                         }`}
-                        title="Star"
+                        title="Sort"
                     >
                         <PiArrowsDownUp size={20} />
                     </button>
+                    {table.getFilteredSelectedRowModel().rows.length ? (
+                        <>
+                            <div
+                                className={`${
+                                    theme === "dark"
+                                        ? "border-[#FFFFFF]/[40%]"
+                                        : "border-[#1C1C1C]/[40%]"
+                                } w-[0px] h-[20px] mx-4  border-r-[1px] rounded-[80px]`}
+                            />
+
+                            <div
+                                className={`flex items-center text-[14px] font-[400]  px-[8px] py-[4px] gap-[4px] rounded-[8px] ${
+                                    theme === "dark"
+                                        ? "hover:bg-[#FFFFFF]/[10%] text-[#ffffff]/[80%]"
+                                        : "hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C]/[80%]"
+                                }`}
+                            >
+                                {
+                                    table.getFilteredSelectedRowModel().rows
+                                        .length
+                                }{" "}
+                                Selected
+                            </div>
+                            <button
+                                className={`flex items-center text-[14px] font-[400] px-[8px] py-[4px] gap-[4px] rounded-[8px] ${
+                                    theme === "dark"
+                                        ? "bg-[#FFFFFF]/[10%] hover:bg-[#FFFFFF]/[20%]"
+                                        : "bg-[#1C1C1C]/[10%] hover:bg-[#1C1C1C]/[20%]"
+                                }`}
+                                title="Sort"
+                                onClick={() =>
+                                    console.log(
+                                        table.getFilteredSelectedRowModel().rows
+                                    )
+                                }
+                            >
+                                Delete Selected
+                            </button>
+                        </>
+                    ) : null}
                 </div>
                 <div
                     className={`transition-all duration-600 w-[180px] ${
