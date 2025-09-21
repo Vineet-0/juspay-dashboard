@@ -5,7 +5,6 @@ const initialState = {
     openedTabs: JSON.parse(localStorage.getItem("openedTabs") ?? "[]"),
     activePath: localStorage.getItem("activePath") ?? "/Dashboard/Default",
 };
-console.log(JSON.parse(localStorage.getItem("openedTab") ?? "[]"));
 
 const sideBarSlice = createSlice({
     name: "sideBar",
@@ -30,7 +29,6 @@ const sideBarSlice = createSlice({
             ); // Persist to localStorage
         },
         setActivePath: (state, action: PayloadAction<string>) => {
-            console.log(action.payload);
             state.activePath = action.payload;
             localStorage.setItem("activePath", action.payload);
         },

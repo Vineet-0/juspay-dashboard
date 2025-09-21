@@ -721,11 +721,6 @@ export function OrderListTable() {
                                         : "bg-[#1C1C1C]/[10%] hover:bg-[#1C1C1C]/[20%]"
                                 }`}
                                 title="Sort"
-                                onClick={() =>
-                                    console.log(
-                                        table.getFilteredSelectedRowModel().rows
-                                    )
-                                }
                             >
                                 Delete Selected
                             </button>

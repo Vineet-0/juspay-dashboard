@@ -97,8 +97,6 @@ export default function ChartMapPoint() {
             </CardContent>
             <CardFooter className="flex-col gap-2 text-sm p-0">
                 {mapData.map((item, index) => {
-                    const width = `w-[${item?.revenue?.split("K")?.[0]}%]`;
-                    console.log(width);
                     return (
                         <div
                             key={index}

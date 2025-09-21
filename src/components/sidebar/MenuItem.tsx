@@ -22,7 +22,6 @@ const MenuItem = ({
     children: any;
     path: string;
 }) => {
-    console.log(newKey, title);
     const theme = useSelector((state: RootState) => state.theme);
     const { sidebarOpen } = useSelector((state: RootState) => state.layout);
     const { activeTab, openedTabs } = useSelector(
@@ -46,7 +45,6 @@ const MenuItem = ({
                     sidebarOpen ? "mt-[4px] h-[28px]" : "p-[4px] h-[35px]"
                 }  w-full rounded-[8px] cursor-pointer flex justify-flex-start items-center relative`}
                 onClick={() => {
-                    console.log(path);
                     dispatch(setActivePath(path));
                     dispatch(toggleOpenedTab(newKey));
                     dispatch(setActiveTab(newKey));
