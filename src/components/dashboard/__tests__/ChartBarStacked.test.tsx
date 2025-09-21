@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import ChartBarStacked from '../ChartBarStacked';
-import themeReducer from '../../../store/themeSlice';
+import themeReducer, { type Theme } from '../../../store/themeSlice';
 
 // Mock recharts components
 jest.mock('recharts', () => ({
@@ -21,7 +21,7 @@ jest.mock('@/components/ui/chart', () => ({
   ChartTooltipContent: (props: any) => <div data-testid="chart-tooltip-content" {...props} />,
 }));
 
-const createMockStore = (theme = 'light') => {
+const createMockStore = (theme: Theme = 'light') => {
   return configureStore({
     reducer: {
       theme: themeReducer,
@@ -32,7 +32,7 @@ const createMockStore = (theme = 'light') => {
   });
 };
 
-const renderWithProvider = (theme = 'light') => {
+const renderWithProvider = (theme: Theme = 'light') => {
   const store = createMockStore(theme);
   return render(
     <Provider store={store}>

@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import Rightbar from '../Rightbar';
-import themeReducer from '../../../store/themeSlice';
+import themeReducer, { type Theme } from '../../../store/themeSlice';
 import layoutReducer from '../../../store/layoutSlice';
 
 // Mock child components
@@ -25,7 +25,7 @@ jest.mock('../Contacts', () => {
   };
 });
 
-const createMockStore = (theme = 'light', rightbarOpen = true) => {
+const createMockStore = (theme: Theme = 'light', rightbarOpen = true) => {
   return configureStore({
     reducer: {
       theme: themeReducer,
@@ -41,7 +41,7 @@ const createMockStore = (theme = 'light', rightbarOpen = true) => {
   });
 };
 
-const renderWithProvider = (theme = 'light', rightbarOpen = true) => {
+const renderWithProvider = (theme: Theme = 'light', rightbarOpen = true) => {
   const store = createMockStore(theme, rightbarOpen);
   return render(
     <Provider store={store}>
