@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AgCharts } from "ag-charts-react";
 import { type AgChartOptions } from "ag-charts-enterprise";
 import {
@@ -13,7 +12,7 @@ import { topology } from "./topology";
 import "ag-charts-enterprise";
 
 const ChartExample = () => {
-    const [options, setOptions] = useState<AgChartOptions>({
+    const options: AgChartOptions = {
         padding: {
             top: 0,
             right: 0,
@@ -49,7 +48,7 @@ const ChartExample = () => {
                 showInLegend: false,
             },
         ],
-    });
+    };
 
     return <AgCharts options={options} className="max-h-full" />;
 };
