@@ -12,6 +12,11 @@ const themeSlice = createSlice({
     reducers: {
         setTheme: (state, action: PayloadAction<Theme>) => {
             console.log(state);
+            if (action.payload === "dark") {
+                document.documentElement.classList.add("dark");
+            } else {
+                document.documentElement.classList.remove("dark");
+            }
             localStorage.setItem("theme", action.payload); // Save to localStorage
             return action.payload; // Update state
         },

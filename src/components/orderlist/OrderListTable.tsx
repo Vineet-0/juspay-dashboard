@@ -48,8 +48,6 @@ import {
     PiMagnifyingGlass,
     PiPlus,
 } from "react-icons/pi";
-import { useSelector } from "react-redux";
-import { type RootState } from "../../store";
 import {
     Pagination,
     PaginationContent,
@@ -394,7 +392,6 @@ export const CommonHeader = ({
     column: any;
     title: string;
 }) => {
-    const theme = useSelector((state: RootState) => state.theme);
     const [isHovered, setIsHovered] = React.useState(false);
 
     return (
@@ -403,22 +400,12 @@ export const CommonHeader = ({
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            <div
-                className={`${
-                    theme === "dark"
-                        ? "text-[#FFFFFF]/[40%]"
-                        : "text-[#1C1C1C]/[40%]"
-                } `}
-            >
+            <div className={`dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%]`}>
                 {title}
             </div>
             {isHovered && (
                 <button
-                    className={`w-[24px] h-[24px] p-[4px] gap-[4px] rounded-[8px] ${
-                        theme === "dark"
-                            ? "text-[#FFFFFF] hover:bg-[#FFFFFF]/[10%]"
-                            : "text-[#1C1C1C] hover:bg-[#1C1C1C]/[5%]"
-                    }`}
+                    className={`w-[24px] h-[24px] p-[4px] gap-[4px] rounded-[8px] dark:text-[#FFFFFF] dark:hover:bg-[#FFFFFF]/[10%] text-[#1C1C1C] hover:bg-[#1C1C1C]/[5%]`}
                     title="Sort"
                     onClick={() =>
                         column.toggleSorting(column.getIsSorted() === "asc")
@@ -438,7 +425,6 @@ export function OrderListTable() {
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({});
     const [rowSelection, setRowSelection] = React.useState({});
-    const theme = useSelector((state: RootState) => state.theme);
     const [currentHoverOn, setCurrentHoverOn] = React.useState<string | null>(
         null
     );
@@ -570,16 +556,12 @@ export function OrderListTable() {
                 <CommonHeader column={column} title="Status" />
             ),
             cell: ({ row }) => {
-                const theme = useSelector((state: RootState) => state.theme);
                 const StatusColor: Record<OrderList["status"], string> = {
                     "In Process": "text-[#8A8CD9]",
                     Complete: "text-[#4AA785]",
                     Pending: "text-[#59A8D4]",
                     Approved: "text-[#FFC555]",
-                    Rejected:
-                        theme === "dark"
-                            ? "text-[#FFFFFF]/[40%]"
-                            : "text-[#1C1C1C]/[40%]",
+                    Rejected: "dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%]",
                 };
                 const newStatus = row.getValue("status") as OrderList["status"];
                 return (
@@ -603,11 +585,7 @@ export function OrderListTable() {
                         <DropdownMenuTrigger asChild>
                             <Button
                                 variant="ghost"
-                                className={`h-8 w-[48px] p-0 ${
-                                    theme === "dark"
-                                        ? " hover:bg-[#FFFFFF]/[10%] hover:text-white"
-                                        : " hover:bg-[#1C1C1C]/[5%]"
-                                }`}
+                                className={`h-8 w-[48px] p-0 dark:hover:bg-[#FFFFFF]/[10%] dark:hover:text-[#FFFFFF] hover:bg-[#1C1C1C]/[5%]`}
                             >
                                 <span className="sr-only">Open menu</span>
                                 <MoreHorizontal />
@@ -656,37 +634,23 @@ export function OrderListTable() {
     return (
         <div className="w-full h-[92%] px-[24px] py-[10px] flex flex-col gap-[12px]">
             <div
-                className={`flex items-center justify-between p-[8px] rounded-[8px]  ${
-                    theme === "dark" ? "bg-[#FFFFFF]/[5%]" : "bg-[#1C1C1C]/[5%]"
-                }`}
+                className={`flex items-center justify-between p-[8px] rounded-[8px] dark:bg-[#FFFFFF]/[5%] bg-[#1C1C1C]/[5%]å`}
             >
                 <div className="rounded-[8px] flex items-center gap-[8px]">
                     <button
-                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] ${
-                            theme === "dark"
-                                ? "hover:bg-[#FFFFFF]/[10%]"
-                                : "hover:bg-[#1C1C1C]/[5%]"
-                        }`}
+                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] dark:hover:bg-[#FFFFFF]/[10%] hover:bg-[#1C1C1C]/[5%]`}
                         title="Add"
                     >
                         <PiPlus size={20} />
                     </button>
                     <button
-                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] ${
-                            theme === "dark"
-                                ? "hover:bg-[#FFFFFF]/[10%]"
-                                : "hover:bg-[#1C1C1C]/[5%]"
-                        }`}
+                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] dark:hover:bg-[#FFFFFF]/[10%] hover:bg-[#1C1C1C]/[5%]`}
                         title="Filter"
                     >
                         <PiFunnelSimple size={20} />
                     </button>
                     <button
-                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] ${
-                            theme === "dark"
-                                ? "hover:bg-[#FFFFFF]/[10%]"
-                                : "hover:bg-[#1C1C1C]/[5%]"
-                        }`}
+                        className={`w-[28px] h-[28px] p-[4px] gap-[4px] rounded-[8px] dark:hover:bg-[#FFFFFF]/[10%] hover:bg-[#1C1C1C]/[5%]`}
                         title="Sort"
                     >
                         <PiArrowsDownUp size={20} />
@@ -694,19 +658,11 @@ export function OrderListTable() {
                     {table.getFilteredSelectedRowModel().rows.length ? (
                         <>
                             <div
-                                className={`${
-                                    theme === "dark"
-                                        ? "border-[#FFFFFF]/[40%]"
-                                        : "border-[#1C1C1C]/[40%]"
-                                } w-[0px] h-[20px] mx-4  border-r-[1px] rounded-[80px]`}
+                                className={`dark:border-[#FFFFFF]/[40%] border-[#1C1C1C]/[40%] w-[0px] h-[20px] mx-4  border-r-[1px] rounded-[80px]`}
                             />
 
                             <div
-                                className={`flex items-center text-[14px] font-[400]  px-[8px] py-[4px] gap-[4px] rounded-[8px] ${
-                                    theme === "dark"
-                                        ? "hover:bg-[#FFFFFF]/[10%] text-[#ffffff]/[80%]"
-                                        : "hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C]/[80%]"
-                                }`}
+                                className={`flex items-center text-[14px] font-[400]  px-[8px] py-[4px] gap-[4px] rounded-[8px] dark:hover:bg-[#FFFFFF]/[10%] dark:text-[#ffffff]/[80%] hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C]/[80%]`}
                             >
                                 {
                                     table.getFilteredSelectedRowModel().rows
@@ -715,11 +671,7 @@ export function OrderListTable() {
                                 Selected
                             </div>
                             <button
-                                className={`flex items-center text-[14px] font-[400] px-[8px] py-[4px] gap-[4px] rounded-[8px] ${
-                                    theme === "dark"
-                                        ? "bg-[#FFFFFF]/[10%] hover:bg-[#FFFFFF]/[20%]"
-                                        : "bg-[#1C1C1C]/[10%] hover:bg-[#1C1C1C]/[20%]"
-                                }`}
+                                className={`flex items-center text-[14px] font-[400] px-[8px] py-[4px] gap-[4px] rounded-[8px] dark:bg-[#FFFFFF]/[10%] dark:hover:bg-[#FFFFFF]/[20%] bg-[#1C1C1C]/[10%] hover:bg-[#1C1C1C]/[20%]`}
                                 title="Sort"
                                 onClick={() =>
                                     console.log(
@@ -733,28 +685,16 @@ export function OrderListTable() {
                     ) : null}
                 </div>
                 <div
-                    className={`transition-all duration-600 w-[200px] ${
-                        theme === "dark"
-                            ? "bg-[#1c1c1c]/[40%] border-[#ffffff]/[10%] text-white"
-                            : "bg-[#ffffff]/[40%] border-[#1c1c1c]/[10%] text-black"
-                    } hover:w-1/2 border-[1px] rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1 `}
+                    className={`transition-all duration-600 w-[200px] dark:bg-[#1c1c1c]/[40%] dark:border-[#ffffff]/[10%] dark:text-white bg-[#ffffff]/[40%] border-[#1c1c1c]/[10%] text-black hover:w-1/2 border-[1px] rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1 `}
                 >
                     <PiMagnifyingGlass
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[20%]"
-                                : "text-[#1C1C1C]/[20%]"
-                        }`}
+                        className={`dark:text-[#FFFFFF]/[20%] text-[#1C1C1C]/[20%]`}
                         size={16}
                     />
                     <input
                         type="text"
                         placeholder="Search by Project Name"
-                        className={`text-[14px] font-[400] ${
-                            theme === "dark"
-                                ? "text-[#FFFFFF] placeholder-white"
-                                : "text-[#1C1C1C] placeholder-black"
-                        } bg-transparent outline-none w-full`}
+                        className={`text-[14px] font-[400] dark:text-[#FFFFFF] dark:placeholder-[#FFFFFF] text-[#1C1C1C] placeholder-black bg-transparent outline-none w-full`}
                         value={
                             (table
                                 .getColumn("project")
@@ -774,11 +714,7 @@ export function OrderListTable() {
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow
                                 key={headerGroup.id}
-                                className={`${
-                                    theme === "dark"
-                                        ? "border-[#FFFFFF]/[20%] hover:bg-[#FFFFFF]/[5%]"
-                                        : "border-[#1C1C1C]/[20%] hover:bg-[#F7F9FB]"
-                                }`}
+                                className={`dark:border-[#FFFFFF]/[20%] dark:hover:bg-[#FFFFFF]/[5%] border-[#1C1C1C]/[20%] hover:bg-[#F7F9FB]`}
                             >
                                 {headerGroup.headers.map((header) => {
                                     return (
@@ -804,16 +740,10 @@ export function OrderListTable() {
                                     // data-state={
                                     //     row.getIsSelected() && "selected"
                                     // }
-                                    className={`h-[44px] ${
-                                        theme === "dark"
-                                            ? "border-[#FFFFFF]/[5%] hover:bg-[#FFFFFF]/[5%]"
-                                            : "border-[#1C1C1C]/[5%] hover:bg-[#F7F9FB]"
-                                    } ${
+                                    className={`h-[44px] dark:border-[#FFFFFF]/[5%] dark:hover:bg-[#FFFFFF]/[5%] border-[#1C1C1C]/[5%] hover:bg-[#F7F9FB] ${
                                         row.getIsSelected() &&
                                         "selected" &&
-                                        (theme === "dark"
-                                            ? "bg-[#FFFFFF]/[5%]"
-                                            : "bg-[#F7F9FB]")
+                                        "dark:bg-[#FFFFFF]/[5%] bg-[#F7F9FB]"
                                     } `}
                                     onMouseOver={() =>
                                         setCurrentHoverOn(
@@ -859,11 +789,7 @@ export function OrderListTable() {
                                         table.previousPage();
                                     }
                                 }}
-                                className={`${
-                                    theme === "dark"
-                                        ? "hover:bg-[#ffffff]/[10%] text-[#ffffff] hover:text-[#ffffff]"
-                                        : "hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C] hover:text-[#1C1C1C]"
-                                }`}
+                                className={`dark:hover:bg-[#ffffff]/[10%] dark:text-[#ffffff] dark:hover:text-[#ffffff] hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C] hover:text-[#1C1C1C]`}
                             />
                         </PaginationItem>
                         <div className="flex items-center justify-center space-x-2 py-4">
@@ -881,9 +807,7 @@ export function OrderListTable() {
                                             className={` border-0 shadow-none ${
                                                 table.getState().pagination
                                                     .pageIndex === index
-                                                    ? theme === "dark"
-                                                        ? "bg-[#ffffff]/[10%] text-white"
-                                                        : "bg-[#1C1C1C]/[5%] text-[#1C1C1C]"
+                                                    ? "dark:bg-[#ffffff]/[10%] dark:text-[#FFFFFF] bg-[#1C1C1C]/[5%] text-[#1C1C1C]"
                                                     : "bg-transparent"
                                             }`}
                                         >
@@ -901,11 +825,7 @@ export function OrderListTable() {
                                         table.nextPage();
                                     }
                                 }}
-                                className={`${
-                                    theme === "dark"
-                                        ? "hover:bg-[#ffffff]/[10%] text-[#ffffff] hover:text-[#ffffff]"
-                                        : "hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C] hover:text-[#1C1C1C]"
-                                }`}
+                                className={`dark:hover:bg-[#ffffff]/[10%] dark:text-[#ffffff] dark:hover:text-[#ffffff] hover:bg-[#1C1C1C]/[5%] text-[#1C1C1C] hover:text-[#1C1C1C]`}
                             />
                         </PaginationItem>
                     </PaginationContent>

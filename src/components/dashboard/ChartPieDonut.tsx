@@ -88,9 +88,7 @@ export default function ChartPieDonut() {
         <Card className="max-h-full p-0 bg-transparent shadow-none border-0 gap-3">
             <CardHeader className="p-0 bg-transparent">
                 <CardTitle
-                    className={`${
-                        theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
-                    } text-[14px] font-[600]`}
+                    className={`dark:text-[#FFFFFF] text-[#1C1C1C] text-[14px] font-[600]`}
                 >
                     Total Sales
                 </CardTitle>
@@ -128,11 +126,7 @@ export default function ChartPieDonut() {
                     return (
                         <div
                             key={index}
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]"
-                                    : "text-[#1C1C1C]"
-                            } w-full flex items-center justify-between text-[12px] font-[400]`}
+                            className={`dark:text-[#FFFFFF] text-[#1C1C1C] w-full flex items-center justify-between text-[12px] font-[400]`}
                         >
                             <div className="flex flex-1 items-center gap-[4px]">
                                 <PiCircleFill

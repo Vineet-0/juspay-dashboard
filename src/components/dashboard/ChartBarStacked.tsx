@@ -13,8 +13,6 @@ import {
     ChartTooltipContent,
     type ChartConfig,
 } from "@/components/ui/chart";
-import { useSelector } from "react-redux";
-import { type RootState } from "@/store";
 
 export const description = "A stacked bar chart with a legend";
 
@@ -39,14 +37,11 @@ const chartConfig = {
 } satisfies ChartConfig;
 
 export default function ChartBarStacked() {
-    const theme = useSelector((state: RootState) => state.theme);
     return (
         <Card className="max-h-full p-0 bg-transparent shadow-none border-0 gap-3">
             <CardHeader className="p-0 bg-transparent">
                 <CardTitle
-                    className={`${
-                        theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
-                    } text-[14px] font-[600]`}
+                    className={`darkdark:text-[#FFFFFF] dark:text-[#1C1C1C]  text-[14px] font-[600]`}
                 >
                     Projection v/s Actuals
                 </CardTitle>

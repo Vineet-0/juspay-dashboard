@@ -36,48 +36,28 @@ const Notifications = () => {
     ];
     return (
         <div className="flex flex-col">
-            <h2
-                className={`${
-                    theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
-                } px-[4px] py-[8px] rounded-[8px] text-[14px] font-[600]`}
-            >
+            <h2 className="text-[#1C1C1C] dark:text-[#FFFFFF]/ px-[4px] py-[8px] rounded-[8px] text-[14px] font-[600]">
                 Notifications
             </h2>
             <ul>
                 {notifications.map((notification) => (
                     <li
                         key={notification.id}
-                        className={`py-[4px] px-[8px] mt-[8px] rounded-[8px] flex items-center gap-[8px] ${
-                            theme === "dark"
-                                ? "hover:bg-[#F7F9FB]/[10%]"
-                                : "hover:bg-[#1C1C1C]/[5%]"
-                        }`}
+                        className="py-[4px] px-[8px] mt-[8px] rounded-[8px] flex items-center gap-[8px] hover:bg-[#1C1C1C]/[5%] dark:hover:bg-[#FFFFFF]/[10%]"
                     >
                         <div
                             style={{
                                 backgroundColor: `${notification.bg}`,
                             }}
-                            className={`rounded-[8px] p-[4px] text-black`}
+                            className={`rounded-[8px] p-[4px] text-[#1C1C1C]`}
                         >
                             {notification.icon}
                         </div>
                         <div>
-                            <p
-                                className={`${
-                                    theme === "dark"
-                                        ? "text-[#FFFFFF]"
-                                        : "text-[#1C1C1C]"
-                                } text-[14px] h-[20px] font-[400] overflow-hidden`}
-                            >
+                            <p className="text-[#1C1C1C] dark:text-[#FFFFFF] text-[14px] h-[20px] font-[400] overflow-hidden">
                                 {notification.message}
                             </p>
-                            <p
-                                className={`${
-                                    theme === "dark"
-                                        ? "text-[#FFFFFF]/[40%]"
-                                        : "text-[#1C1C1C]/[40%]"
-                                } text-[12px] font-[400]`}
-                            >
+                            <p className="text-[#1C1C1C]/[40%] dark:text-[#FFFFFF]/[40%] text-[12px] font-[400]">
                                 {notification.time}
                             </p>
                         </div>

@@ -43,45 +43,23 @@ export default function SearchBar() {
     return (
         <>
             <div
-                className={`transition-all duration-600 w-[180px] ${
-                    theme === "dark"
-                        ? "bg-[#ffffff]/[5%] text-white"
-                        : "bg-[#1c1c1c]/[5%] text-black"
-                } rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1 `}
+                className="transition-all duration-600 w-[180px] bg-[#1C1C1C]/[5%] dark:bg-[#FFFFFF]/[5%] text-[#1C1C1C] dark:text-[#FFFFFF] rounded-lg shadow px-[8px] py-[4px] flex items-center gap-1"
                 onClick={() => setOpen(true)}
             >
                 <PiMagnifyingGlass
-                    className={`${
-                        theme === "dark"
-                            ? "text-[#FFFFFF]/[20%]"
-                            : "text-[#1C1C1C]/[20%]"
-                    }`}
+                    className="text-[#1C1C1C]/[20%] dark:text-[#FFFFFF]/[20%]"
                     size={16}
                 />
                 <input
                     type="text"
                     placeholder="Search"
-                    className={`text-[14px] font-[400] ${
-                        theme === "dark"
-                            ? "text-[#FFFFFF] placeholder-white"
-                            : "text-[#1C1C1C] placeholder-black"
-                    } bg-transparent outline-none w-full`}
+                    className="text-[14px] font-[400] text-[#1C1C1C] dark:text-[#FFFFFF] placeholder-[#1C1C1C] dark:placeholder-[#FFFFFF] bg-transparent outline-none w-full"
                 />
                 <PiCommand
-                    className={`${
-                        theme === "dark"
-                            ? "text-[#FFFFFF]/[20%]"
-                            : "text-[#1C1C1C]/[20%]"
-                    } text-[14px] font-[400]`}
+                    className="text-[#1C1C1C]/[20%] dark:text-[#FFFFFF]/[20%] text-[14px] font-[400]"
                     size={20}
                 />
-                <div
-                    className={`${
-                        theme === "dark"
-                            ? "text-[#FFFFFF]/[20%]"
-                            : "text-[#1C1C1C]/[20%]"
-                    } text-[14px] font-[400]`}
-                >
+                <div className="text-[#1C1C1C]/[20%] dark:text-[#FFFFFF]/[20%] text-[14px] font-[400]">
                     /
                 </div>
             </div>
@@ -92,13 +70,7 @@ export default function SearchBar() {
                 showCloseButton={false}
             >
                 <CommandInput placeholder="Type a command or search..." />
-                <CommandList
-                    className={`${
-                        theme === "dark"
-                            ? "scrollbar-custom-dark"
-                            : "scrollbar-custom-light"
-                    }`}
-                >
+                <CommandList className="scrollbar-custom-light dark:scrollbar-custom-dark">
                     <CommandEmpty>No results found.</CommandEmpty>
                     <CommandGroup heading="Suggestions">
                         <CommandItem>
@@ -135,9 +107,7 @@ export default function SearchBar() {
                 </CommandList>
                 <button
                     onClick={() => setOpen(false)}
-                    className={`absolute top-[9px] right-[14px] p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 ${
-                        theme === "dark" ? "text-white" : "text-black"
-                    }`}
+                    className="absolute top-[9px] right-[14px] p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 text-black dark:text-white"
                 >
                     ✕
                 </button>

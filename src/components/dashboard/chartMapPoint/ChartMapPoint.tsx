@@ -79,9 +79,7 @@ export default function ChartMapPoint() {
         <Card className="max-h-full p-0 bg-transparent shadow-none border-0 gap-3">
             <CardHeader className="p-0 bg-transparent">
                 <CardTitle
-                    className={`${
-                        theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
-                    } text-[14px] font-[600]`}
+                    className={`dark:text-[#FFFFFF] text-[#1C1C1C] text-[14px] font-[600]`}
                 >
                     Revenue by Location
                 </CardTitle>
@@ -105,22 +103,14 @@ export default function ChartMapPoint() {
                             className="w-full flex flex-col gap-[2px]"
                         >
                             <div
-                                className={`${
-                                    theme === "dark"
-                                        ? "text-[#FFFFFF]"
-                                        : "text-[#1C1C1C]"
-                                } w-full flex items-center justify-between text-[12px] font-[400]`}
+                                className={`dark:text-[#FFFFFF] text-[#1C1C1C] w-full flex items-center justify-between text-[12px] font-[400]`}
                             >
                                 <div>{item?.name}</div>
                                 <div>{item?.revenue}</div>
                             </div>
                             <div className="w-full relative">
                                 <div
-                                    className={`w-full border-2 ${
-                                        theme === "dark"
-                                            ? "border-[#FFFFFF]/[40%]"
-                                            : "border-[#A8C5DA]/[40%]"
-                                    }   rounded-[80px]`}
+                                    className={`w-full border-2 dark:border-[#FFFFFF]/[40%] border-[#A8C5DA]/[40%]" rounded-[80px]`}
                                 ></div>
                                 <div
                                     className={`absolute top-0 w-1/2 border-2 border-[#A8C5DA] rounded-[80px]`}

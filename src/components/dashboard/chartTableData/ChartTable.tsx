@@ -6,8 +6,6 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
-import { useSelector } from "react-redux";
-import { type RootState } from "@/store";
 
 const tableData: DashboardTable[] = [
     {
@@ -50,51 +48,29 @@ export type DashboardTable = {
 };
 
 export function ChartTable() {
-    const theme = useSelector((state: RootState) => state.theme);
-
     return (
         <Table>
             <TableHeader>
                 <TableRow
-                    className={`text-[12px] font-[400] ${
-                        theme === "dark"
-                            ? "text-[#FFFFFF]/[40%] border-[#FFFFFF]/[20%] hover:bg-[#FFFFFF]/[5%]"
-                            : "text-[#1C1C1C]/[40%] border-[#1C1C1C]/[20%] hover:bg-[#1C1C1C]/[5%]"
-                    }`}
+                    className={`text-[12px] font-[400] dark:text-[#FFFFFF]/[40%] dark:border-[#FFFFFF]/[20%] dark:hover:bg-[#FFFFFF]/[5%] text-[#1C1C1C]/[40%] border-[#1C1C1C]/[20%] hover:bg-[#1C1C1C]/[5%]"`}
                 >
                     <TableHead
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } min-w-[100px] flex-1`}
+                        className={`dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%] min-w-[100px] flex-1`}
                     >
                         Name
                     </TableHead>
                     <TableHead
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } min-w-[100px] flex-1`}
+                        className={`dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%] min-w-[100px] flex-1`}
                     >
                         Price
                     </TableHead>
                     <TableHead
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } min-w-[100px] flex-1`}
+                        className={`dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%] min-w-[100px] flex-1`}
                     >
                         Quantity
                     </TableHead>
                     <TableHead
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } min-w-[100px] flex-1`}
+                        className={`dark:text-[#FFFFFF]/[40%] text-[#1C1C1C]/[40%] min-w-[100px] flex-1`}
                     >
                         Amount
                     </TableHead>
@@ -104,45 +80,25 @@ export function ChartTable() {
                 {tableData.map((data) => (
                     <TableRow
                         key={data.id}
-                        className={`border-0 text-[12px] font-[400] ${
-                            theme === "dark"
-                                ? "hover:bg-[#FFFFFF]/[5%]"
-                                : "hover:bg-[#1C1C1C]/[5%]"
-                        }`}
+                        className={`border-0 text-[12px] font-[400] dark:hover:bg-[#FFFFFF]/[5%] hover:bg-[#1C1C1C]/[5%]`}
                     >
                         <TableCell
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]"
-                                    : "text-[#1C1C1C]"
-                            } min-w-[100px] flex-1`}
+                            className={`dark:text-[#FFFFFF] text-[#1C1C1C] min-w-[100px] flex-1`}
                         >
                             {data.name}
                         </TableCell>
                         <TableCell
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]"
-                                    : "text-[#1C1C1C]"
-                            } min-w-[100px] flex-1`}
+                            className={`dark:text-[#FFFFFF] text-[#1C1C1C] min-w-[100px] flex-1`}
                         >
                             ${data.price}
                         </TableCell>
                         <TableCell
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]"
-                                    : "text-[#1C1C1C]"
-                            } min-w-[100px] flex-1`}
+                            className={`dark:text-[#FFFFFF] text-[#1C1C1C] min-w-[100px] flex-1`}
                         >
                             {data.quantity}
                         </TableCell>
                         <TableCell
-                            className={`${
-                                theme === "dark"
-                                    ? "text-[#FFFFFF]"
-                                    : "text-[#1C1C1C]"
-                            } min-w-[100px] flex-1`}
+                            className={`dark:text-[#FFFFFF] text-[#1C1C1C] min-w-[100px] flex-1`}
                         >
                             $
                             {(
