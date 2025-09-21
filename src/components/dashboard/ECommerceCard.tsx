@@ -26,9 +26,9 @@ const ECommerceCard = ({
                 >
                     {growth}
                     {growth?.[0] === "-" ? (
-                        <AiOutlineFall />
+                        <AiOutlineFall size={16} fontWeight={700} />
                     ) : (
-                        <AiOutlineRise />
+                        <AiOutlineRise size={16} fontWeight={700} />
                     )}
                 </div>
             </div>
