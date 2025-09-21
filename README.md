@@ -1,12 +1,18 @@
 # Deployed Links
 
--   https://juspay-dashboard-eosin.vercel.app
--   https://juspay-dashboard-git-main-vineet0s-projects.vercel.app
--   https://juspay-dashboard-5r8ki7xpp-vineet0s-projects.vercel.app
+-   Production: https://juspay-dashboard-eosin.vercel.app
+-   Backup 1: https://juspay-dashboard-git-main-vineet0s-projects.vercel.app
+-   Backup 2: https://juspay-dashboard-5r8ki7xpp-vineet0s-projects.vercel.app
+
+# Demo Video
+
+A short walkthrough video covering features, motion, and approach has been recorded:
+
+-
 
 # Juspay Dashboard
 
-A modern, responsive dashboard application built with React, TypeScript, and Vite. This project showcases a comprehensive eCommerce interface with interactive charts, data visualization, and a clean, professional design.
+A modern, responsive, pixel-perfect dashboard built with React, TypeScript, and Vite. This project replicates the given SaaS dashboard design with meaningful motion, microinteractions, and full responsiveness across devices.
 
 ## 🚀 Features
 
@@ -55,15 +61,6 @@ A modern, responsive dashboard application built with React, TypeScript, and Vit
 4. **Open your browser**
    Navigate to `http://localhost:5173` to view the application
 
-## 🏃‍♂️ Available Scripts
-
--   `npm run dev` - Start development server
--   `npm run build` - Build for production
--   `npm run preview` - Preview production build
--   `npm run test` - Run tests
--   `npm run test:coverage` - Run tests with coverage report
--   `npm run lint` - Run ESLint
-
 ## 🎯 Project Structure
 
 ```
@@ -80,6 +77,15 @@ src/
 ├── pages/              # Page components
 └── assets/             # Static assets
 ```
+
+## 🏃‍♂️ Available Scripts
+
+-   `npm run dev` - Start development server
+-   `npm run build` - Build for production
+-   `npm run preview` - Preview production build
+-   `npm run test` - Run tests
+-   `npm run test:coverage` - Run tests with coverage report
+-   `npm run lint` - Run ESLint
 
 ## 🎨 Design Approach
 
@@ -213,10 +219,6 @@ I chose Vite over Create React App because:
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
