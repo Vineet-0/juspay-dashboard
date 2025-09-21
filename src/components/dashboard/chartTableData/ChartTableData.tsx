@@ -16,7 +16,7 @@ export default function ChartTableData() {
                     Top Selling Products
                 </CardTitle>
             </CardHeader>
-            <CardContent className="p-0 mt-[-10px] flex w-full  max-h-[215px]">
+            <CardContent className="p-0 mt-[-10px] flex w-full  max-h-[225px]">
                 <ChartTable />
             </CardContent>
         </Card>

@@ -1,9 +1,15 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { type RootState } from "../../store";
 import { OrderListTable } from "@/components/orderlist/OrderListTable";
 
 const OrderList = () => {
     const theme = useSelector((state: RootState) => state.theme);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setIsVisible(true), 100); // Delay to trigger animation
+    }, []);
 
     return (
         <div
@@ -20,7 +26,13 @@ const OrderList = () => {
             >
                 Order List
             </div>
-            <OrderListTable />
+            <div
+                className={`transition-opacity duration-500 ${
+                    isVisible ? "opacity-100" : "opacity-0"
+                }`}
+            >
+                <OrderListTable />
+            </div>
         </div>
     );
 };

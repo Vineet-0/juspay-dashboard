@@ -10,6 +10,7 @@ import {
 
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store";
+import { PiCircleFill } from "react-icons/pi";
 
 export const description = "A multiple line chart";
 
@@ -43,9 +44,36 @@ export default function ChartLineMultiple() {
                 <CardTitle
                     className={`${
                         theme === "dark" ? "text-[#FFFFFF]" : "text-[#1C1C1C]"
-                    } text-[14px] font-[600]`}
+                    } flex items-center gap-[30px]`}
                 >
-                    Revenue
+                    <div className="flex items-center gap-[20px]">
+                        <div className={` text-[14px] font-[600]`}>Revenue</div>
+                        <div
+                            className={`${
+                                theme === "dark"
+                                    ? "border-[#FFFFFF]/[40%]"
+                                    : "border-[#1C1C1C]/[40%]"
+                            } text-[14px] font-[600] w-[0px] h-[20px] border-r-[1px] rounded-[80px]`}
+                        ></div>
+                    </div>
+                    <div className="flex items-center gap-[30px]">
+                        <div className="flex items-center gap-[4px] text-[12px] font-[400]">
+                            <PiCircleFill
+                                className={`${
+                                    theme === "dark"
+                                        ? "text-[#C6C7F8]"
+                                        : "text-[#1C1C1C]"
+                                }`}
+                            />{" "}
+                            Current Week
+                            <span className="font-bold">$58,211</span>
+                        </div>
+                        <div className="flex items-center gap-[4px] text-[12px] font-[400]">
+                            <PiCircleFill className="text-[#A8C5DA]" />
+                            Previous Week{" "}
+                            <span className="font-bold">$68,768</span>
+                        </div>
+                    </div>
                 </CardTitle>
             </CardHeader>
             <CardContent className="p-0 flex w-full  max-h-[215px]">

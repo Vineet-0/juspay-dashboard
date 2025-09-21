@@ -1,18 +1,3 @@
-"use client";
-
-import * as React from "react";
-import {
-    flexRender,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    useReactTable,
-    type ColumnDef,
-    type ColumnFiltersState,
-    type SortingState,
-    type VisibilityState,
-} from "@tanstack/react-table";
 import {
     Table,
     TableBody,
@@ -24,7 +9,7 @@ import {
 import { useSelector } from "react-redux";
 import { type RootState } from "@/store";
 
-const data: OrderList[] = [
+const tableData: DashboardTable[] = [
     {
         id: "1",
         name: "ASOS Ridley High Waist",
@@ -57,7 +42,7 @@ const data: OrderList[] = [
     },
 ];
 
-export type OrderList = {
+export type DashboardTable = {
     id: string;
     name: string;
     price: string;
@@ -65,191 +50,108 @@ export type OrderList = {
 };
 
 export function ChartTable() {
-    const [sorting, setSorting] = React.useState<SortingState>([]);
-    const [columnFilters, setColumnFilters] =
-        React.useState<ColumnFiltersState>([]);
-    const [columnVisibility, setColumnVisibility] =
-        React.useState<VisibilityState>({});
-    const [rowSelection, setRowSelection] = React.useState({});
     const theme = useSelector((state: RootState) => state.theme);
-    const columns: ColumnDef<OrderList>[] = [
-        {
-            accessorKey: "name",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Name
-                    </div>
-                );
-            },
-            cell: ({ row }) => (
-                <div className="capitalize">{row.getValue("name")}</div>
-            ),
-        },
-
-        {
-            accessorKey: "price",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Price
-                    </div>
-                );
-            },
-            cell: ({ row }) => (
-                <div className="capitalize">${row.getValue("price")}</div>
-            ),
-        },
-        {
-            accessorKey: "quantity",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        } `}
-                    >
-                        Quantity
-                    </div>
-                );
-            },
-            cell: ({ row }) => (
-                <div className="capitalize flex items-center gap-[4px] relative w-fit">
-                    {row.getValue("quantity")}
-                </div>
-            ),
-        },
-        {
-            accessorKey: "amount",
-            header: () => {
-                const theme = useSelector((state: RootState) => state.theme);
-                return (
-                    <div
-                        className={`${
-                            theme === "dark"
-                                ? "text-[#FFFFFF]/[40%]"
-                                : "text-[#1C1C1C]/[40%]"
-                        }`}
-                    >
-                        Amount
-                    </div>
-                );
-            },
-            cell: ({ row }) => (
-                <div className="capitalize flex items-center gap-[4px]">
-                    $
-                    {(
-                        parseFloat(row.getValue("price")) *
-                        parseFloat(row.getValue("quantity"))
-                    ).toFixed(2)}
-                </div>
-            ),
-        },
-    ];
-
-    const table = useReactTable({
-        data,
-        columns,
-        onSortingChange: setSorting,
-        onColumnFiltersChange: setColumnFilters,
-        getCoreRowModel: getCoreRowModel(),
-        getPaginationRowModel: getPaginationRowModel(),
-        getSortedRowModel: getSortedRowModel(),
-        getFilteredRowModel: getFilteredRowModel(),
-        onColumnVisibilityChange: setColumnVisibility,
-        onRowSelectionChange: setRowSelection,
-        state: {
-            sorting,
-            columnFilters,
-            columnVisibility,
-            rowSelection,
-        },
-    });
 
     return (
         <Table>
             <TableHeader>
-                {table.getHeaderGroups().map((headerGroup) => (
-                    <TableRow
-                        key={headerGroup.id}
-                        className={` ${
+                <TableRow
+                    className={`text-[12px] font-[400] ${
+                        theme === "dark"
+                            ? "text-[#FFFFFF]/[40%] border-[#FFFFFF]/[20%] hover:bg-[#FFFFFF]/[5%]"
+                            : "text-[#1C1C1C]/[40%] border-[#1C1C1C]/[20%] hover:bg-[#1C1C1C]/[5%]"
+                    }`}
+                >
+                    <TableHead
+                        className={`${
                             theme === "dark"
-                                ? "border-[#FFFFFF]/[20%] hover:bg-[#FFFFFF]/[5%]"
-                                : "border-[#1C1C1C]/[20%] hover:bg-[#F7F9FB]"
+                                ? "text-[#FFFFFF]/[40%]"
+                                : "text-[#1C1C1C]/[40%]"
+                        } min-w-[100px] flex-1`}
+                    >
+                        Name
+                    </TableHead>
+                    <TableHead
+                        className={`${
+                            theme === "dark"
+                                ? "text-[#FFFFFF]/[40%]"
+                                : "text-[#1C1C1C]/[40%]"
+                        } min-w-[100px] flex-1`}
+                    >
+                        Price
+                    </TableHead>
+                    <TableHead
+                        className={`${
+                            theme === "dark"
+                                ? "text-[#FFFFFF]/[40%]"
+                                : "text-[#1C1C1C]/[40%]"
+                        } min-w-[100px] flex-1`}
+                    >
+                        Quantity
+                    </TableHead>
+                    <TableHead
+                        className={`${
+                            theme === "dark"
+                                ? "text-[#FFFFFF]/[40%]"
+                                : "text-[#1C1C1C]/[40%]"
+                        } min-w-[100px] flex-1`}
+                    >
+                        Amount
+                    </TableHead>
+                </TableRow>
+            </TableHeader>
+            <TableBody>
+                {tableData.map((data) => (
+                    <TableRow
+                        key={data.id}
+                        className={`border-0 text-[12px] font-[400] ${
+                            theme === "dark"
+                                ? "hover:bg-[#FFFFFF]/[5%]"
+                                : "hover:bg-[#1C1C1C]/[5%]"
                         }`}
                     >
-                        {headerGroup.headers.map((header) => {
-                            return (
-                                <TableHead key={header.id}>
-                                    {header.isPlaceholder
-                                        ? null
-                                        : flexRender(
-                                              header.column.columnDef.header,
-                                              header.getContext()
-                                          )}
-                                </TableHead>
-                            );
-                        })}
-                    </TableRow>
-                ))}
-            </TableHeader>
-            <TableBody className="max-h-[300px] overflow-y-auto">
-                {table.getRowModel().rows?.length ? (
-                    table.getRowModel().rows.map((row) => (
-                        <TableRow
-                            key={row.id}
-                            // data-state={
-                            //     row.getIsSelected() && "selected"
-                            // }
-                            className={`h-[44px] ${
-                                theme === "dark"
-                                    ? "border-[#FFFFFF]/[5%] hover:bg-[#FFFFFF]/[5%]"
-                                    : "border-[#1C1C1C]/[5%] hover:bg-[#F7F9FB]"
-                            } ${
-                                row.getIsSelected() &&
-                                "selected" &&
-                                (theme === "dark"
-                                    ? "bg-[#FFFFFF]/[5%]"
-                                    : "bg-[#F7F9FB]")
-                            } `}
-                        >
-                            {row.getVisibleCells().map((cell) => (
-                                <TableCell key={cell.id}>
-                                    {flexRender(
-                                        cell.column.columnDef.cell,
-                                        cell.getContext()
-                                    )}
-                                </TableCell>
-                            ))}
-                        </TableRow>
-                    ))
-                ) : (
-                    <TableRow>
                         <TableCell
-                            colSpan={columns.length}
-                            className="h-24 text-center"
+                            className={`${
+                                theme === "dark"
+                                    ? "text-[#FFFFFF]"
+                                    : "text-[#1C1C1C]"
+                            } min-w-[100px] flex-1`}
                         >
-                            No results.
+                            {data.name}
+                        </TableCell>
+                        <TableCell
+                            className={`${
+                                theme === "dark"
+                                    ? "text-[#FFFFFF]"
+                                    : "text-[#1C1C1C]"
+                            } min-w-[100px] flex-1`}
+                        >
+                            ${data.price}
+                        </TableCell>
+                        <TableCell
+                            className={`${
+                                theme === "dark"
+                                    ? "text-[#FFFFFF]"
+                                    : "text-[#1C1C1C]"
+                            } min-w-[100px] flex-1`}
+                        >
+                            {data.quantity}
+                        </TableCell>
+                        <TableCell
+                            className={`${
+                                theme === "dark"
+                                    ? "text-[#FFFFFF]"
+                                    : "text-[#1C1C1C]"
+                            } min-w-[100px] flex-1`}
+                        >
+                            $
+                            {(
+                                parseFloat(data.price) *
+                                parseFloat(data.quantity)
+                            ).toFixed(2)}
                         </TableCell>
                     </TableRow>
-                )}
+                ))}
             </TableBody>
         </Table>
     );

@@ -9,11 +9,17 @@ import ChartLineMultiple from "@/components/dashboard/ChartLineMultiple";
 import ChartPieDonut from "@/components/dashboard/ChartPieDonut";
 import ChartMapPoint from "@/components/dashboard/chartMapPoint/ChartMapPoint";
 import ChartTableData from "@/components/dashboard/chartTableData/ChartTableData";
+import { useEffect, useState } from "react";
 
 const ResponsiveGridLayout = WidthProvider(Responsive);
 
 const Dashboard = () => {
     const theme = useSelector((state: RootState) => state.theme);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setIsVisible(true), 100); // Delay to trigger animation
+    }, []);
 
     const layout = [
         {
@@ -106,36 +112,48 @@ const Dashboard = () => {
             >
                 eCommerce
             </div>
-            <ResponsiveGridLayout
-                className={`layout ${
-                    theme === "dark"
-                        ? "bg-[#1C1C1C] text-white"
-                        : "bg-white text-black"
+            <div
+                className={`transition-opacity duration-500 ${
+                    isVisible ? "opacity-100" : "opacity-0"
                 }`}
-                layouts={{ lg: layout }}
-                breakpoints={{ lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0 }}
-                cols={{ lg: 4, md: 4, sm: 4, xs: 2, xxs: 1 }}
-                rowHeight={130}
-                isResizable={false}
-                isDraggable={true}
-                margin={[28, 28]}
             >
-                {layout.map((item) => (
-                    <div
-                        key={item.i}
-                        className={`${
-                            theme === "dark"
-                                ? "bg-[#FFFFFF]/[5%]"
-                                : "bg-[#F7F9FB]"
-                        } rounded-[16px] border-0 shadow-md overflow-hidden`}
-                        style={{ background: item?.color }}
-                    >
-                        <div className="w-full h-full p-[24px]">
-                            {item?.component}
+                <ResponsiveGridLayout
+                    className={`layout ${
+                        theme === "dark"
+                            ? "bg-[#1C1C1C] text-white"
+                            : "bg-white text-black"
+                    }`}
+                    layouts={{ lg: layout }}
+                    breakpoints={{
+                        lg: 1200,
+                        md: 996,
+                        sm: 768,
+                        xs: 480,
+                        xxs: 0,
+                    }}
+                    cols={{ lg: 4, md: 4, sm: 4, xs: 2, xxs: 1 }}
+                    rowHeight={130}
+                    isResizable={false}
+                    isDraggable={true}
+                    margin={[28, 28]}
+                >
+                    {layout.map((item) => (
+                        <div
+                            key={item.i}
+                            className={`${
+                                theme === "dark"
+                                    ? "bg-[#FFFFFF]/[5%]"
+                                    : "bg-[#F7F9FB]"
+                            } rounded-[16px] border-0 shadow-md overflow-hidden`}
+                            style={{ background: item?.color }}
+                        >
+                            <div className="w-full h-full p-[24px]">
+                                {item?.component}
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </ResponsiveGridLayout>
+                    ))}
+                </ResponsiveGridLayout>
+            </div>
         </>
     );
 };
